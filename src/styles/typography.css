@@ -103,15 +103,15 @@
     }
 
     code {
-      @apply bg-muted/75 text-foreground rounded p-1 wrap-break-word before:content-none after:content-none;
+      @apply bg-muted/60 text-foreground font-medium rounded-md px-1.5 py-0.5 text-[0.875em] border border-border/50 wrap-break-word before:content-none after:content-none;
     }
 
     .astro-code code {
-      @apply flex-[1_0_100%] bg-inherit p-0;
+      @apply flex-[1_0_100%] bg-inherit p-0 border-0 rounded-none;
     }
 
     blockquote {
-      @apply border-s-accent/80 wrap-break-word opacity-80;
+      @apply border-s-4 border-s-accent bg-muted/20 rounded-r-xl px-4 py-2 my-4 wrap-break-word text-foreground;
     }
 
     details:not(.callout) {
@@ -129,7 +129,7 @@
 
   /* ===== Code Blocks & Syntax Highlighting ===== */
   .astro-code {
-    @apply outline-border flex border bg-(--shiki-light-bg) text-(--shiki-light) [&_span]:text-(--shiki-light);
+    @apply outline-border flex border border-border/80 rounded-xl p-4 my-6 shadow-sm bg-(--shiki-light-bg) text-(--shiki-light) [&_span]:text-(--shiki-light);
   }
 
   html[data-theme="dark"] .astro-code {
