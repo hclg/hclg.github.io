@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>期权四象限：一个故事讲透 Put 和 Call</title>
+<style>
+ * { box-sizing: border-box; margin: 0; padding: 0; }
+ body {
+   font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+   background: #f8f9fb; color: #1f2329; line-height: 1.75; padding: 0;
+ }
+
+ /* 头部 */
+ .header { background: linear-gradient(135deg, #1e293b 0%, #334155 100%); color: #fff; padding: 60px 24px 50px; text-align: center; }
+ .header h1 { font-size: 34px; font-weight: 800; letter-spacing: -1px; margin-bottom: 12px; }
+ .header p { font-size: 16px; color: #94a3b8; max-width: 640px; margin: 0 auto; }
+
+ .wrap { max-width: 1120px; margin: 0 auto; padding: 40px 24px 80px; }
+
+ /* 通用 */
+ .section { background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 30px 32px; margin-bottom: 26px; }
+ .section h2 { font-size: 20px; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+ .section h2 .badge { font-size: 12px; padding: 2px 10px; border-radius: 12px; font-weight: 600; }
+ .section .lead { color: #64748b; font-size: 14.5px; margin-bottom: 22px; }
+
+ /* 核心比喻卡片 */
+ .metaphor { background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%); border: 1px solid #fde68a; border-radius: 12px; padding: 24px 28px; margin-bottom: 28px; }
+ .metaphor .icon { font-size: 32px; margin-bottom: 10px; }
+ .metaphor h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; color: #92400e; }
+ .metaphor p { font-size: 14.5px; color: #78350f; }
+
+ /* 四象限 */
+ .quad { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+ .qcard { border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; transition: box-shadow .2s; }
+ .qcard:hover { box-shadow: 0 8px 24px rgba(0,0,0,.08); }
+ .qcard .qhead { padding: 16px 20px; color: #fff; font-weight: 700; font-size: 15px; display: flex; justify-content: space-between; align-items: center; }
+ .qcard .qhead .role { font-size: 12px; background: rgba(255,255,255,.2); padding: 2px 10px; border-radius: 10px; }
+ .qcard .qbody { padding: 18px 20px; }
+ .qcard .analogy { background: #f8fafc; border-left: 3px solid #cbd5e1; padding: 12px 16px; border-radius: 0 8px 8px 0; margin-bottom: 14px; font-size: 14px; color: #334155; }
+ .qcard .analogy b { color: #0f172a; }
+ .qcard .outcomes { font-size: 13.5px; }
+ .qcard .outcomes .oc { display: flex; align-items: flex-start; gap: 8px; padding: 6px 0; }
+ .qcard .outcomes .oc:not(:last-child) { border-bottom: 1px dashed #f1f5f9; }
+ .qcard .outcomes .dot { width: 7px; height: 7px; border-radius: 50%; margin-top: 7px; flex-shrink: 0; }
+ .qcard .kv { display: flex; justify-content: space-between; margin-top: 14px; padding-top: 14px; border-top: 1px solid #f1f5f9; font-size: 12.5px; color: #64748b; }
+ .qcard .kv span { text-align: center; }
+ .qcard .kv b { display: block; font-size: 15px; color: #0f172a; margin-top: 2px; }
+
+ .c-buy-call .qhead { background: linear-gradient(135deg, #059669 0%, #10b981 100%); }
+ .c-buy-put .qhead { background: linear-gradient(135deg, #dc2626 0%, #f43f5e 100%); }
+ .c-sell-call .qhead { background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%); }
+ .c-sell-put .qhead { background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%); }
+
+ /* 交互损益图 */
+ .ctrl { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 10px; }
+ .ctrl label { font-size: 13.5px; color: #475569; white-space: nowrap; }
+ .ctrl input[type=range] { flex: 1; min-width: 260px; accent-color: #2563eb; height: 5px; }
+ .ptag { font-variant-numeric: tabular-nums; font-size: 24px; font-weight: 700; color: #0f172a; min-width: 80px; text-align: right; }
+
+ .legend { display: flex; gap: 14px; flex-wrap: wrap; margin: 12px 0 6px; }
+ .lg { display: flex; align-items: center; gap: 6px; font-size: 12.5px; color: #475569; cursor: pointer; user-select: none; padding: 4px 12px; border: 1px solid #e2e8f0; border-radius: 16px; transition: .15s; }
+ .lg:hover { background: #f1f5f9; }
+ .lg.off { opacity: .3; }
+ .swatch { width: 16px; height: 3px; border-radius: 2px; }
+
+ svg { display: block; width: 100%; height: auto; }
+
+ .cards-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 18px; }
+ .minicard { border: 1px solid #e2e8f0; border-radius: 10px; padding: 12px 14px; }
+ .minicard .mn { font-size: 12px; color: #64748b; margin-bottom: 2px; }
+ .minicard .mv { font-size: 20px; font-weight: 700; font-variant-numeric: tabular-nums; }
+ .pos { color: #059669; } .neg { color: #dc2626; } .zero { color: #64748b; }
+
+ .insight-box { background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 10px; padding: 16px 20px; margin-top: 18px; font-size: 13.5px; color: #0c4a6e; }
+ .insight-box b { color: #0369a1; }
+
+ /* 对比表 */
+ .compare { width: 100%; border-collapse: collapse; font-size: 13.5px; margin-top: 14px; }
+ .compare th { background: #f8fafc; padding: 10px 14px; text-align: left; font-weight: 650; border-bottom: 2px solid #e2e8f0; }
+ .compare td { padding: 10px 14px; border-bottom: 1px solid #f1f5f9; vertical-align: top; }
+ .compare tr:hover td { background: #fafbfc; }
+ .compare .h-buy { color: #059669; font-weight: 600; }
+ .compare .h-sell { color: #2563eb; font-weight: 600; }
+
+ /* 心智模型 */
+ .mental { background: #1e293b; color: #e2e8f0; border-radius: 14px; padding: 30px 32px; margin-bottom: 26px; }
+ .mental h2 { color: #fff; font-size: 20px; margin-bottom: 16px; }
+ .mental .eq { background: #0f172a; border: 1px solid #334155; border-radius: 10px; padding: 18px 24px; text-align: center; font-size: 18px; color: #fbbf24; font-weight: 700; margin-bottom: 18px; letter-spacing: 0.5px; }
+ .mental .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+ .mental .tip { background: #334155; border-radius: 10px; padding: 16px 18px; }
+ .mental .tip .tt { font-size: 13px; color: #94a3b8; margin-bottom: 6px; }
+ .mental .tip .tv { font-size: 14.5px; color: #f1f5f9; }
+ .mental .tip .tv em { color: #fbbf24; font-style: normal; font-weight: 650; }
+
+ /* 时间线 */
+ .timeline { display: flex; gap: 0; margin: 20px 0 10px; position: relative; }
+ .timeline::before { content: ''; position: absolute; top: 18px; left: 0; right: 0; height: 3px; background: #e2e8f0; border-radius: 2px; }
+ .tnode { flex: 1; text-align: center; position: relative; z-index: 1; }
+ .tnode .circ { width: 38px; height: 38px; border-radius: 50%; margin: 0 auto 10px; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; color: #fff; }
+ .tnode .tl { font-size: 13px; font-weight: 600; color: #334155; }
+ .tnode .td { font-size: 12px; color: #64748b; margin-top: 3px; max-width: 140px; margin-left: auto; margin-right: auto; }
+
+ .disclaimer { text-align: center; color: #94a3b8; font-size: 12px; margin-top: 30px; }
+
+ @media (max-width: 860px) {
+   .quad, .cards-row, .mental .grid3 { grid-template-columns: 1fr; }
+   .timeline { flex-direction: column; gap: 14px; }
+   .timeline::before { display: none; }
+ }
+</style>
+</head>
+<body>
+
+<div class="header">
+ <h1>期权，一个故事讲透</h1>
+ <p>忘掉所有术语。我们就在一条街上，有房子、有保险公司、有赌场。<br>把四种玩法全走一遍，你就全懂了。</p>
+</div>
+
+<div class="wrap">
+
+ <!-- 核心比喻 -->
+ <div class="metaphor">
+ <div class="icon">🏘️</div>
+ <h3>整个期权世界，就是一条街上的四种人</h3>
+ <p>这条街上有一套房子，现在市价 <b>100 万</b>。四种人围着这套房子，各怀心思。<br>
+ <b>买 Call 的人</b>：花一点小钱锁定一个「涨了我能买」的权利——他是看涨的赌徒。<br>
+ <b>买 Put 的人</b>：花一点小钱锁定一个「跌了我能卖」的权利——他是买保险的房东。<br>
+ <b>卖 Call 的人</b>：收钱答应「涨了我以固定价卖给你」——他是限价挂单的房东。<br>
+ <b>卖 Put 的人</b>：收钱答应「跌了我以固定价从你手里买」——他是保险公司。<br><br>
+ 买方付定金买「权利」，卖方收定金扛「义务」。这就是全部。</p>
+ </div>
+
+ <!-- 四象限 -->
+ <div class="section">
+ <h2>一、四种角色，四个故事</h2>
+ <p class="lead">每种角色用一个生活场景讲透。下面的「定金」就是权利金，「行权价」就是约定好的价格。</p>
+
+ <div class="quad">
+ <!-- 买 Call -->
+ <div class="qcard c-buy-call">
+ <div class="qhead">买 Call：花小钱赌大涨<span class="role">买方 · 看涨</span></div>
+ <div class="qbody">
+ <div class="analogy">
+ 你看中一套房，怕明天涨价，但又拿不出全款。于是花 <b>3 万定金</b>锁定了一个月内 <b>110 万买入</b>的资格。<br>
+ 涨了？你赚差价。不涨？<b>最多亏 3 万定金</b>，不用真的买。
+ </div>
+ <div class="outcomes">
+ <div class="oc"><span class="dot" style="background:#059669"></span>涨到 130 万 → 你 110 万买入转手卖 130 万，净赚 <b>17 万</b></div>
+ <div class="oc"><span class="dot" style="background:#64748b"></span>没涨过 110 万 → 不行权，<b>只亏 3 万定金</b></div>
+ </div>
+ <div class="kv">
+ <span>最大亏损<b>3 万（固定）</b></span>
+ <span>最大收益<b>无上限</b></span>
+ <span>胜率<b>较低</b></span>
+ </div>
+ </div>
+ </div>
+
+ <!-- 买 Put -->
+ <div class="qcard c-buy-put">
+ <div class="qhead">买 Put：给持仓买保险<span class="role">买方 · 看跌</span></div>
+ <div class="qbody">
+ <div class="analogy">
+ 你有一套 100 万的房子，怕暴跌。于是花 <b>3 万保费</b>买了个保险：一个月内不管跌多少，<b>保底 90 万卖出</b>。<br>
+ 跌了？保险兜底。不跌？<b>保费白付</b>，权当买个安心。
+ </div>
+ <div class="outcomes">
+ <div class="oc"><span class="dot" style="background:#dc2626"></span>崩到 60 万 → 你照样 90 万卖，避免了 <b>30 万损失</b>，净省 27 万</div>
+ <div class="oc"><span class="dot" style="background:#64748b"></span>没跌破 90 万 → 保险白买了，<b>只亏 3 万保费</b></div>
+ </div>
+ <div class="kv">
+ <span>最大亏损<b>3 万（固定）</b></span>
+ <span>最大收益<b>87 万（跌到 0）</b></span>
+ <span>胜率<b>较低</b></span>
+ </div>
+ </div>
+ </div>
+
+ <!-- 卖 Call -->
+ <div class="qcard c-sell-call">
+ <div class="qhead">卖 Call：收租封顶上涨<span class="role">卖方 · 看不涨</span></div>
+ <div class="qbody">
+ <div class="analogy">
+ 你有房子，觉得一个月内涨不过 110 万。于是收别人 <b>3 万定金</b>，答应如果涨过 110 万就卖给他。<br>
+ 没涨过？<b>3 万白赚</b>。涨过了？只能 110 万卖，<b>多涨的部分全归别人</b>。
+ </div>
+ <div class="outcomes">
+ <div class="oc"><span class="dot" style="background:#059669"></span>没涨过 110 万 → 房子还是你的，<b>白赚 3 万</b></div>
+ <div class="oc"><span class="dot" style="background:#dc2626"></span>涨到 150 万 → 必须 110 万卖，<b>少赚 37 万</b>（裸卖则实亏）</div>
+ </div>
+ <div class="kv">
+ <span>最大收益<b>3 万（固定）</b></span>
+ <span>最大亏损<b>无上限（裸卖）</b></span>
+ <span>胜率<b>较高</b></span>
+ </div>
+ </div>
+ </div>
+
+ <!-- 卖 Put -->
+ <div class="qcard c-sell-put">
+ <div class="qhead">卖 Put：收保费等着接盘<span class="role">卖方 · 看不跌</span></div>
+ <div class="qbody">
+ <div class="analogy">
+ 你觉得这房子值钱，如果跌到 90 万你愿意接手。于是收别人 <b>3 万保费</b>，答应一个月内跌破 90 万就从他手里买走。<br>
+ 没跌破？<b>3 万白赚</b>。跌破了？你得按 90 万接货，<b>可能浮亏</b>。
+ </div>
+ <div class="outcomes">
+ <div class="oc"><span class="dot" style="background:#059669"></span>没跌破 90 万 → 啥也不用做，<b>白赚 3 万</b></div>
+ <div class="oc"><span class="dot" style="background:#dc2626"></span>崩到 60 万 → 必须 90 万买，<b>浮亏 27 万</b></div>
+ </div>
+ <div class="kv">
+ <span>最大收益<b>3 万（固定）</b></span>
+ <span>最大亏损<b>87 万（跌到 0）</b></span>
+ <span>胜率<b>较高</b></span>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <div class="insight-box">
+ <b>发现规律了吗？</b> 买方和卖方是镜像关系——买方付的定金，就是卖方收的定金；买方的收益曲线翻转 180° 就是卖方的。<b>期权是零和游戏：一方赚的就是另一方亏的。</b>
+ </div>
+ </div>
+
+ <!-- 交互损益图 -->
+ <div class="section">
+ <h2>二、拖动股价，看四种人同时怎么赚怎么亏</h2>
+ <p class="lead">股价 100 元。买 Call 行权价 110（付 3 元），买 Put 行权价 90（付 3 元），卖 Call 行权价 110（收 3 元），卖 Put 行权价 90（收 3 元）。看到期那天发生了什么。</p>
+
+ <div class="ctrl">
+ <label>到期日股价</label>
+ <input type="range" id="slider" min="60" max="140" step="0.5" value="100">
+ <div class="ptag" id="ptag">100.0</div>
+ </div>
+ <div class="legend" id="legend"></div>
+ <svg id="chart" viewBox="0 0 960 420"></svg>
+ <div class="cards-row" id="cards"></div>
+ <div class="insight-box" id="note"></div>
+ </div>
+
+ <!-- 买方 vs 卖方对比 -->
+ <div class="section">
+ <h2>三、买方 vs 卖方：一张表看透</h2>
+ <p class="lead">不用死记，抓住「买方花钱买权利，卖方收钱扛义务」这一条，其他全能推出来。</p>
+ <table class="compare">
+ <tr><th></th><th class="h-buy">买方（付权利金）</th><th class="h-sell">卖方（收权利金）</th></tr>
+ <tr><td><b>花钱 / 收钱</b></td><td>先付出一笔固定的权利金</td><td>先收到一笔固定的权利金</td></tr>
+ <tr><td><b>权利 / 义务</b></td><td>有权利，没义务（可以不行权）</td><td>有义务，没权利（对方要求就必须执行）</td></tr>
+ <tr><td><b>盈亏形状</b></td><td>亏损封顶（就那点权利金），收益可以很大</td><td>收益封顶（就那点权利金），亏损可以很大</td></tr>
+ <tr><td><b>胜率</b></td><td>低。大部分期权到期作废</td><td>高。时间站在卖方这边</td></tr>
+ <tr><td><b>时间是敌是友</b></td><td>敌人。每过一天，你的权利在贬值</td><td>朋友。每过一天，你的义务在消融</td></tr>
+ <tr><td><b>类比</b></td><td>买彩票 / 买保险的人</td><td>开彩票店 / 保险公司</td></tr>
+ <tr><td><b>最怕什么</b></td><td>什么都没发生（钱白花了）</td><td>黑天鹅（一次赔光前面所有利润）</td></tr>
+ <tr><td><b>适合什么人</b></td><td>想用小钱博大的、或者要对冲的</td><td>想稳定收租、愿意扛尾部风险的</td></tr>
+ </table>
+ </div>
+
+ <!-- 时间的故事 -->
+ <div class="section">
+ <h2>四、时间这块冰，两边完全不同的感受</h2>
+ <p class="lead">期权有「保质期」。同一块冰，在买方手里越融越亏，在卖方手里越融越赚。</p>
+
+ <div class="timeline">
+ <div class="tnode"><div class="circ" style="background:#2563eb">90</div><div class="tl">买入当天</div><div class="td">花了 3 元买权利，冰块是满的</div></div>
+ <div class="tnode"><div class="circ" style="background:#3b82f6">60</div><div class="tl">过了一个月</div><div class="td">啥都没发生，冰融掉 1/4，权利金只值 2.3 了</div></div>
+ <div class="tnode"><div class="circ" style="background:#60a5fa">30</div><div class="tl">还剩一个月</div><div class="td">加速融化，权利金跌到 1.5</div></div>
+ <div class="tnode"><div class="circ" style="background:#93c5fd">7</div><div class="tl">最后一周</div><div class="td">断崖式融化！只值 0.4</div></div>
+ <div class="tnode"><div class="circ" style="background:#dc2626">0</div><div class="tl">到期日</div><div class="td">冰完全融化 = 0。没有用到的权利一文不值</div></div>
+ </div>
+
+ <div class="insight-box" style="margin-top: 22px;">
+ <b>对买方</b>：时间是你的敌人。你买了一张「保质期很短的优惠券」，每天都在贬值。所以买期权千万不要「拿着等」。<br><br>
+ <b>对卖方</b>：时间是你的朋友。你收了钱等冰块融化就行，融完就全是你的。所以卖方的核心策略就是「等」。<br><br>
+ <b>这就是为什么有人说「买期权像创业（九死一生），卖期权像开银行（稳定收租但怕挤兑）」。</b>
+ </div>
+ </div>
+
+ <!-- 核心公式 -->
+ <div class="mental">
+ <h2>五、三个最重要的直觉</h2>
+ <div class="grid3">
+ <div class="tip">
+ <div class="tt">直觉 1 · 定价逻辑</div>
+ <div class="tv">权利金 ＝ <em>被行权的概率 × 平均赔付</em><br><br>跟保险公司算保费一模一样。「出事概率高」或「一出事赔得多」，保费就贵。</div>
+ </div>
+ <div class="tip">
+ <div class="tt">直觉 2 · 波动率的含义</div>
+ <div class="tv">波动率 ＝ <em>这套房子价格抖动的幅度</em><br><br>抖得越厉害，不管涨跌，期权都越贵。因为「可能发生大事」的概率在上升。</div>
+ </div>
+ <div class="tip">
+ <div class="tt">直觉 3 · 真正赚/亏钱的原因</div>
+ <div class="tv">买方赚钱靠<em>方向 + 速度</em>（猜对且猛）<br>卖方赚钱靠<em>什么都没发生</em>（静静等冰融化）<br><br>两种完全不同的交易哲学。</div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 快速判断 -->
+ <div class="section">
+ <h2>六、一张「该用哪种」速查表</h2>
+ <p class="lead">根据你的判断选姿势。</p>
+ <table class="compare">
+ <tr><th>你的判断</th><th>选什么</th><th>白话解释</th></tr>
+ <tr><td>我觉得要<b>大涨</b></td><td style="color:#059669;font-weight:600;">买 Call</td><td>花小钱博大涨，猜错只亏定金</td></tr>
+ <tr><td>我觉得要<b>大跌</b></td><td style="color:#dc2626;font-weight:600;">买 Put</td><td>花小钱博大跌，或给持仓上保险</td></tr>
+ <tr><td>我觉得<b>涨不动</b></td><td style="color:#d97706;font-weight:600;">卖 Call</td><td>收租金，代价是放弃大涨的部分</td></tr>
+ <tr><td>我觉得<b>跌不下去</b></td><td style="color:#2563eb;font-weight:600;">卖 Put</td><td>收保费，代价是跌了要接盘</td></tr>
+ <tr><td>我觉得会<b>有大波动但不知方向</b></td><td style="color:#7c3aed;font-weight:600;">买 Call + 买 Put</td><td>两边买，赌动一下就行</td></tr>
+ <tr><td>我觉得会<b>横盘</b></td><td style="color:#0891b2;font-weight:600;">卖 Call + 卖 Put</td><td>两边收租，赌不动</td></tr>
+ </table>
+ </div>
+
+ <!-- 常见误区 -->
+ <div class="section">
+ <h2>七、讲给朋友时最常被问到的问题</h2>
+ <p class="lead">提前堵上这些问题，你的讲解就无懈可击了。</p>
+
+ <div class="insight-box" style="background:#f0fdf4; border-color:#86efac; color:#14532d; margin-top:0; margin-bottom:16px;">
+ <b>Q：买期权和直接买股票有什么区别？</b><br>
+ 买股票是花 100 万买一套房子；买 Call 是花 3 万买一张「一个月内能以 110 万买这房子」的券。猜对了，3 万撬动几十万收益（杠杆）；猜错了，最多亏 3 万（有底线）。代价是有期限、会归零。
+ </div>
+ <div class="insight-box" style="background:#fef2f2; border-color:#fecaca; color:#7f1d1d; margin-top:0; margin-bottom:16px;">
+ <b>Q：卖期权能亏多少？会倾家荡产吗？</b><br>
+ 裸卖 Call 理论上亏损无上限（股价可以涨到天上去），这就是为什么券商要求超高保证金。卖 Put 最多亏到股价归零。实际中用「价差」（同时买一个更远的做保护）可以把风险封死。
+ </div>
+ <div class="insight-box" style="background:#eff6ff; border-color:#bfdbfe; color:#1e3a5f; margin-top:0; margin-bottom:16px;">
+ <b>Q：为什么说「卖方胜率高」还能亏钱？</b><br>
+ 跟赌场的庄家一样——100 局里赢 92 局，每局赢 1 万；输那 8 局里有 1 局赔了 50 万。胜率高不等于赚钱，关键看「输的那次有多惨」。
+ </div>
+ <div class="insight-box" style="background:#faf5ff; border-color:#e9d5ff; color:#3b0764; margin-top:0;">
+ <b>Q：「备兑开仓」和「卖 Put」有什么关系？</b><br>
+ 持股 + 卖 Call ＝ 卖 Put。损益曲线形状完全一样。前者听起来安全（因为你有股票），后者听起来危险（因为叫「裸卖」），但数学上是同一件事。心理账户不同罢了。
+ </div>
+ </div>
+
+ <p class="disclaimer">本页仅用于理解期权基本结构，不构成任何投资建议。实盘前请充分了解风险。</p>
+</div>
+
+<script>
+/* ============ 交互图 ============ */
+const S0=100, KC=110, KP=90, P=3;
+const STRATS = [
+ { id:'bc', name:'买 Call', color:'#059669', f: S => -P + Math.max(0, S - KC) },
+ { id:'bp', name:'买 Put', color:'#dc2626', f: S => -P + Math.max(0, KP - S) },
+ { id:'sc', name:'卖 Call', color:'#d97706', f: S => P - Math.max(0, S - KC) },
+ { id:'sp', name:'卖 Put', color:'#2563eb', f: S => P - Math.max(0, KP - S) }
+];
+const on = { bc:true, bp:true, sc:true, sp:true };
+
+const W=960, H=420, PAD={l:56, r:24, t:24, b:48};
+const X0=60, X1=140, Y0=-30, Y1=30;
+const px = s => PAD.l + (s-X0)/(X1-X0)*(W-PAD.l-PAD.r);
+const py = v => PAD.t + (Y1-v)/(Y1-Y0)*(H-PAD.t-PAD.b);
+
+function drawChart(cur){
+ const g=[], plotW=W-PAD.l-PAD.r, plotH=H-PAD.t-PAD.b;
+ // zones
+ g.push(`<rect x="${PAD.l}" y="${PAD.t}" width="${plotW}" height="${py(0)-PAD.t}" fill="#f0fdf4"/>`);
+ g.push(`<rect x="${PAD.l}" y="${py(0)}" width="${plotW}" height="${PAD.t+plotH-py(0)}" fill="#fef2f2"/>`);
+ // grid
+ for(let v=Y0;v<=Y1;v+=10){
+ g.push(`<line x1="${PAD.l}" y1="${py(v)}" x2="${W-PAD.r}" y2="${py(v)}" stroke="${v===0?'#94a3b8':'#e2e8f0'}" stroke-width="${v===0?1.4:1}"/>`);
+ g.push(`<text x="${PAD.l-8}" y="${py(v)+4}" text-anchor="end" font-size="11.5" fill="#64748b">${v>0?'+':''}${v}</text>`);
+ }
+ for(let s=X0;s<=X1;s+=10){
+ g.push(`<line x1="${px(s)}" y1="${PAD.t}" x2="${px(s)}" y2="${PAD.t+plotH}" stroke="#e2e8f0"/>`);
+ g.push(`<text x="${px(s)}" y="${PAD.t+plotH+20}" text-anchor="middle" font-size="11.5" fill="#64748b">${s}</text>`);
+ }
+ g.push(`<text x="${W/2}" y="${H-8}" text-anchor="middle" font-size="12" fill="#475569">到期日股价（元）</text>`);
+ g.push(`<text x="14" y="${PAD.t+plotH/2}" text-anchor="middle" font-size="12" fill="#475569" transform="rotate(-90 14 ${PAD.t+plotH/2})">每股盈亏（元）</text>`);
+ // strike refs
+ [[KP,'#2563eb','Put 行权价 90'],[KC,'#d97706','Call 行权价 110']].forEach(([k,c,lab])=>{
+ g.push(`<line x1="${px(k)}" y1="${PAD.t}" x2="${px(k)}" y2="${PAD.t+plotH}" stroke="${c}" stroke-width="1" stroke-dasharray="4,3" opacity=".4"/>`);
+ g.push(`<text x="${px(k)}" y="${PAD.t-7}" text-anchor="middle" font-size="10.5" fill="${c}">${lab}</text>`);
+ });
+ // curves
+ STRATS.forEach(st=>{
+ if(!on[st.id]) return;
+ let d='';
+ for(let s=X0;s<=X1+.01;s+=0.5){
+ const v=Math.max(Y0,Math.min(Y1,st.f(s)));
+ d+=(d?'L':'M')+px(s).toFixed(1)+','+py(v).toFixed(1)+' ';
+ }
+ g.push(`<path d="${d}" fill="none" stroke="${st.color}" stroke-width="2.6" stroke-linejoin="round"/>`);
+ });
+ // cursor
+ const cx=px(cur);
+ g.push(`<line x1="${cx}" y1="${PAD.t}" x2="${cx}" y2="${PAD.t+plotH}" stroke="#0f172a" stroke-width="1.4"/>`);
+ g.push(`<rect x="${cx-30}" y="${PAD.t+plotH+2}" width="60" height="18" rx="4" fill="#0f172a"/>`);
+ g.push(`<text x="${cx}" y="${PAD.t+plotH+15}" text-anchor="middle" font-size="11" fill="#fff" font-weight="600">${cur.toFixed(1)}</text>`);
+ STRATS.forEach(st=>{
+ if(!on[st.id]) return;
+ const v=Math.max(Y0,Math.min(Y1,st.f(cur)));
+ g.push(`<circle cx="${cx}" cy="${py(v)}" r="5" fill="#fff" stroke="${st.color}" stroke-width="2.6"/>`);
+ });
+ document.getElementById('chart').innerHTML=g.join('');
+}
+
+function drawLegend(){
+ document.getElementById('legend').innerHTML=STRATS.map(st=>
+ `<div class="lg${on[st.id]?'':' off'}" data-id="${st.id}"><span class="swatch" style="background:${st.color}"></span>${st.name}</div>`
+ ).join('');
+ document.querySelectorAll('.lg').forEach(el=>{
+ el.onclick=()=>{ on[el.dataset.id]=!on[el.dataset.id]; drawLegend(); render(); };
+ });
+}
+
+function drawCards(cur){
+ document.getElementById('cards').innerHTML=STRATS.map(st=>{
+ const v=st.f(cur);
+ const cls=v>0.05?'pos':(v<-0.05?'neg':'zero');
+ const sign=v>0.05?'+':'';
+ return `<div class="minicard" style="border-left:3px solid ${st.color}">
+ <div class="mn">${st.name}</div>
+ <div class="mv ${cls}">${sign}${v.toFixed(2)} 元</div></div>`;
+ }).join('');
+}
+
+function drawNote(cur){
+ let t;
+ if(cur>=KP && cur<=KC){
+ t=`<b>股价 ${cur.toFixed(1)}，落在 90～110 之间——"什么大事都没发生"。</b>四张期权全部作废。买方（绿线、红线）各亏 3 元定金，卖方（橙线、蓝线）各赚 3 元定金。买卖双方正好「零和对冲」——买方亏的 = 卖方赚的。`;
+ } else if(cur<KP){
+ t=`<b>股价跌到 ${cur.toFixed(1)}，击穿了卖 Put 的行权价 90。</b>买 Put 的人赚了（保险生效！），卖 Put 的人亏了（得赔付）。注意：买 Call 的人？跟他无关，最多亏那 3 元。这就是<b>买方的好处——永远知道最坏结果是什么</b>。`;
+ } else {
+ t=`<b>股价涨到 ${cur.toFixed(1)}，冲过了卖 Call 的行权价 110。</b>买 Call 的人开心了（赌对了！），卖 Call 的人开始亏钱（得把涨幅交出去）。注意绿线的斜率：股价每多涨 1 元，买 Call 的人就多赚 1 元，无上限。这就是<b>小钱搏大收益</b>的杠杆效应。`;
+ }
+ document.getElementById('note').innerHTML=t;
+}
+
+function render(){
+ const cur=parseFloat(document.getElementById('slider').value);
+ document.getElementById('ptag').textContent=cur.toFixed(1);
+ drawChart(cur); drawCards(cur); drawNote(cur);
+}
+document.getElementById('slider').addEventListener('input', render);
+drawLegend(); render();
+</script>
+</body>
+</html>

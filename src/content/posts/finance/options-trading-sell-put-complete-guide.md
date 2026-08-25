@@ -42,6 +42,24 @@ description: 系统拆解期权市场的四大核心操作（买开/卖开/买�
 
 期权市场由两个方向（**看涨认购 Call** / **看跌认沽 Put**）和两个身份（**买方 Buy** / **卖方 Sell**）组合而成：
 
+<div class="my-6">
+  <div class="flex items-center justify-between p-3 bg-muted/40 rounded-t-xl border border-b-0 border-border/80">
+    <div class="flex items-center gap-2">
+      <span class="text-base">🧭</span>
+      <span class="font-bold text-sm sm:text-base text-foreground">期权四象限交互沙盘与动态损益模拟器</span>
+    </div>
+    <a href="/tools/options-quadrant/index.html" target="_blank" rel="noopener noreferrer" class="text-xs text-accent hover:underline flex items-center gap-1">
+      全屏独立窗口打开 ↗
+    </a>
+  </div>
+  <iframe 
+    src="/tools/options-quadrant/index.html" 
+    class="w-full h-[680px] rounded-b-xl border border-border/80 shadow-md bg-background"
+    loading="lazy"
+    title="期权四象限交互损益沙盘"
+  ></iframe>
+</div>
+
 | 角色与权利义务 | 📈 看涨认购期权 (Call) | 📉 看跌认沽期权 (Put) |
 | :--- | :--- | :--- |
 | **🛒 买方 (Buy)**<br>*(付钱买权利，风险有限)* | **① 买入认购 (Buy Call)**<br>👉 赌资产大暴涨，收益无限，最大亏损为定金 | **③ 买入认沽 (Buy Put)**<br>👉 买防灾意外险，赌单边暴跌，对冲现货风险 |
