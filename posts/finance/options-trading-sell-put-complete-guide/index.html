@@ -1,0 +1,801 @@
+<!DOCTYPE html><html dir="ltr" lang="en" class="overflow-y-scroll scroll-smooth"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" href="/favicon.ico"><link rel="canonical" href="https://hclg.github.io/posts/finance/options-trading-sell-put-complete-guide/"><meta name="generator" content="Astro v7.0.3"><!-- Font --><style>@font-face{font-family:"Google Sans Code-1a30c214885cb404";src:url("/_astro/fonts/02154cca78ac33f2.woff") format("woff"), url("/_astro/fonts/478e42e4694872ef.ttf") format("truetype");font-display:swap;font-weight:300;font-style:italic;}@font-face{font-family:"Google Sans Code-1a30c214885cb404";src:url("/_astro/fonts/3a32a7a7a67f4f58.woff") format("woff"), url("/_astro/fonts/0863f4f6964aa89c.ttf") format("truetype");font-display:swap;font-weight:400;font-style:italic;}@font-face{font-family:"Google Sans Code-1a30c214885cb404";src:url("/_astro/fonts/a5c5808c25effec9.woff") format("woff"), url("/_astro/fonts/792eded6cb3f0350.ttf") format("truetype");font-display:swap;font-weight:500;font-style:italic;}@font-face{font-family:"Google Sans Code-1a30c214885cb404";src:url("/_astro/fonts/14314705006234cb.woff") format("woff"), url("/_astro/fonts/87d8fc1072d4917b.ttf") format("truetype");font-display:swap;font-weight:600;font-style:italic;}@font-face{font-family:"Google Sans Code-1a30c214885cb404";src:url("/_astro/fonts/c33265ba093eb291.woff") format("woff"), url("/_astro/fonts/ec883ed4db81a7d9.ttf") format("truetype");font-display:swap;font-weight:700;font-style:italic;}@font-face{font-family:"Google Sans Code-1a30c214885cb404";src:url("/_astro/fonts/c26ad40d3b1d9169.woff") format("woff"), url("/_astro/fonts/7a5ee0cfcde31b81.ttf") format("truetype");font-display:swap;font-weight:300;font-style:normal;}@font-face{font-family:"Google Sans Code-1a30c214885cb404";src:url("/_astro/fonts/87ca066ba5b2c7cf.woff") format("woff"), url("/_astro/fonts/f4e25dfe9d6152ec.ttf") format("truetype");font-display:swap;font-weight:400;font-style:normal;}@font-face{font-family:"Google Sans Code-1a30c214885cb404";src:url("/_astro/fonts/a9a0e80c053be3d5.woff") format("woff"), url("/_astro/fonts/a9df48ecd03749e4.ttf") format("truetype");font-display:swap;font-weight:500;font-style:normal;}@font-face{font-family:"Google Sans Code-1a30c214885cb404";src:url("/_astro/fonts/da468df88542c99b.woff") format("woff"), url("/_astro/fonts/90f9809471092714.ttf") format("truetype");font-display:swap;font-weight:600;font-style:normal;}@font-face{font-family:"Google Sans Code-1a30c214885cb404";src:url("/_astro/fonts/f914de358bc554f6.woff") format("woff"), url("/_astro/fonts/dbc9996f99c63e07.ttf") format("truetype");font-display:swap;font-weight:700;font-style:normal;}@font-face{font-family:"Google Sans Code-1a30c214885cb404 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:300;font-style:italic;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-1a30c214885cb404 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:400;font-style:italic;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-1a30c214885cb404 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:500;font-style:italic;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-1a30c214885cb404 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:600;font-style:italic;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-1a30c214885cb404 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:700;font-style:italic;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-1a30c214885cb404 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:300;font-style:normal;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-1a30c214885cb404 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:400;font-style:normal;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-1a30c214885cb404 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:500;font-style:normal;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-1a30c214885cb404 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:600;font-style:normal;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-1a30c214885cb404 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:700;font-style:normal;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}:root{--font-google-sans-code:"Google Sans Code-1a30c214885cb404","Google Sans Code-1a30c214885cb404 fallback: Courier New",monospace;}</style><!-- Primary meta --><title>玩转期权交易：从东方财富实操到段永平 Sell Put 现金流圣杯完全指南 | 玄冥与彼岸</title><meta name="title" content="玩转期权交易：从东方财富实操到段永平 Sell Put 现金流圣杯完全指南 | 玄冥与彼岸"><meta name="description" content="系统拆解期权市场的四大核心操作（买开/卖开/买平/卖平）、东方财富软件实盘对应指令、段永平 Cash-Covered Put 策略原理、实盘收益率精算与备兑修补防守指南。"><meta name="author" content="玄冥"><link rel="sitemap" href="/sitemap-index.xml"><!-- Open Graph --><meta property="og:type" content="website"><meta property="og:site_name" content="玄冥与彼岸"><meta property="og:title" content="玩转期权交易：从东方财富实操到段永平 Sell Put 现金流圣杯完全指南 | 玄冥与彼岸"><meta property="og:description" content="系统拆解期权市场的四大核心操作（买开/卖开/买平/卖平）、东方财富软件实盘对应指令、段永平 Cash-Covered Put 策略原理、实盘收益率精算与备兑修补防守指南。"><meta property="og:url" content="https://hclg.github.io/posts/finance/options-trading-sell-put-complete-guide/"><meta property="og:image" content="https://hclg.github.io/default-og.jpg"><!-- Twitter / X --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://hclg.github.io/posts/finance/options-trading-sell-put-complete-guide/"><meta property="twitter:title" content="玩转期权交易：从东方财富实操到段永平 Sell Put 现金流圣杯完全指南 | 玄冥与彼岸"><meta property="twitter:description" content="系统拆解期权市场的四大核心操作（买开/卖开/买平/卖平）、东方财富软件实盘对应指令、段永平 Cash-Covered Put 策略原理、实盘收益率精算与备兑修补防守指南。"><meta property="twitter:image" content="https://hclg.github.io/default-og.jpg"><!-- RSS autodiscovery --><link rel="alternate" type="application/rss+xml" title="玄冥与彼岸" href="https://hclg.github.io/rss.xml/"><!-- Filled at runtime by theme.ts to match the current background colour --><meta name="theme-color" content=""><!-- Extra head content injected by child layouts (e.g. JSON-LD, article meta) --><meta property="og:type" content="article"><meta property="article:published_time" content="2026-08-25T05:30:00.000Z"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"玩转期权交易：从东方财富实操到段永平 Sell Put 现金流圣杯完全指南 | 玄冥与彼岸","datePublished":"2026-08-25T05:30:00.000Z","author":[{"@type":"Person","name":"玄冥","url":"https://hclg.github.io"}]}</script><!--
+      Inline FOUC-prevention script: sets data-theme on <html> before
+      the browser paints. Runs synchronously, no defer/async.
+    --><script>
+      (function () {
+        const stored = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        const theme = stored ?? (prefersDark ? "dark" : "light");
+        const root = document.firstElementChild;
+        root?.setAttribute("data-theme", theme);
+        root?.classList.toggle("dark", theme === "dark");
+        // Expose value so theme.ts can skip re-detection.
+        window.__theme = { value: theme };
+      })();
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.2i1RQzKf.js"></script><link rel="stylesheet" href="/_astro/Footer.Dp4Nf8jy.css"><style>@keyframes astroFadeInOut{0%{opacity:1}to{opacity:0}}@keyframes astroFadeIn{0%{opacity:0;mix-blend-mode:plus-lighter}to{opacity:1;mix-blend-mode:plus-lighter}}@keyframes astroFadeOut{0%{opacity:1;mix-blend-mode:plus-lighter}to{opacity:0;mix-blend-mode:plus-lighter}}@keyframes astroSlideFromRight{0%{transform:translate(100%)}}@keyframes astroSlideFromLeft{0%{transform:translate(-100%)}}@keyframes astroSlideToRight{to{transform:translate(100%)}}@keyframes astroSlideToLeft{to{transform:translate(-100%)}}@media (prefers-reduced-motion){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*),[data-astro-transition-scope]{animation:none!important}}
+</style><style>[data-astro-transition-scope="astro-bztu2lml-1"] { view-transition-name: finance; }@layer astro { ::view-transition-old(finance) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(finance) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(finance) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(finance) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-bztu2lml-1"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-bztu2lml-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-bztu2lml-1"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-bztu2lml-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-bztu2lml-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-bztu2lml-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-bztu2lml-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-bztu2lml-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style><style>[data-astro-transition-scope="astro-bztu2lml-2"] { view-transition-name: \7406\8D22; }@layer astro { ::view-transition-old(\7406\8D22) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(\7406\8D22) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(\7406\8D22) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(\7406\8D22) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-bztu2lml-2"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-bztu2lml-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-bztu2lml-2"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-bztu2lml-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-bztu2lml-2"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-bztu2lml-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-bztu2lml-2"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-bztu2lml-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style><style>[data-astro-transition-scope="astro-bztu2lml-3"] { view-transition-name: \671F\6743; }@layer astro { ::view-transition-old(\671F\6743) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(\671F\6743) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(\671F\6743) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(\671F\6743) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-bztu2lml-3"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-bztu2lml-3"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-bztu2lml-3"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-bztu2lml-3"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-bztu2lml-3"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-bztu2lml-3"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-bztu2lml-3"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-bztu2lml-3"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style><style>[data-astro-transition-scope="astro-bztu2lml-4"] { view-transition-name: \6295\8D44\7B56\7565; }@layer astro { ::view-transition-old(\6295\8D44\7B56\7565) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(\6295\8D44\7B56\7565) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(\6295\8D44\7B56\7565) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(\6295\8D44\7B56\7565) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-bztu2lml-4"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-bztu2lml-4"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-bztu2lml-4"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-bztu2lml-4"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-bztu2lml-4"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-bztu2lml-4"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-bztu2lml-4"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-bztu2lml-4"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style><style>[data-astro-transition-scope="astro-bztu2lml-5"] { view-transition-name: \6BB5\6C38\5E73; }@layer astro { ::view-transition-old(\6BB5\6C38\5E73) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(\6BB5\6C38\5E73) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(\6BB5\6C38\5E73) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(\6BB5\6C38\5E73) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-bztu2lml-5"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-bztu2lml-5"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-bztu2lml-5"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-bztu2lml-5"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-bztu2lml-5"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-bztu2lml-5"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-bztu2lml-5"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-bztu2lml-5"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style></head><body class="bg-background font-app text-foreground selection:bg-accent/75 selection:text-accent-foreground flex min-h-svh flex-col"><a id="skip-to-content" href="#main-content" class="bg-background text-accent absolute inset-s-16 -top-full z-50 px-3 py-2 backdrop-blur-lg transition-all focus:top-4">Skip to content</a><header class="app-layout flex flex-col items-center justify-between sm:flex-row"><div class="border-border bg-background relative flex w-full items-baseline justify-between border-b py-4 sm:items-center sm:py-6"><a href="/" class="absolute py-1 text-xl leading-8 font-semibold whitespace-nowrap sm:static sm:my-auto sm:text-2xl sm:leading-none">玄冥与彼岸</a><nav id="nav-menu" class="flex w-full flex-col items-center sm:ms-2 sm:flex-row sm:justify-end sm:space-x-4 sm:py-0"><button id="menu-btn" class="focus-outline self-end p-2 sm:hidden" aria-label="Open menu" aria-expanded="false" aria-controls="menu-items" data-label-open="Open menu" data-label-close="Close menu"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="hidden" viewBox="0 0 24 24" id="close-icon"><path stroke="none" d="M0 0h24v24H0z" /><path d="M18 6 6 18M6 6l12 12" /></svg><svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="icon icon-tabler icons-tabler-outline icon-tabler-menu-deep" viewBox="0 0 24 24" id="menu-icon"><path stroke="none" d="M0 0h24v24H0z" /><path d="M4 6h16M7 12h13M10 18h10" /></svg></button><ul id="menu-items" class="[&amp;&gt;li&gt;a]:hover:text-accent mt-4 hidden w-44 grid-cols-2 place-content-center gap-2 sm:mt-0 sm:flex sm:w-auto sm:gap-x-5 sm:gap-y-0 sm:[&amp;&gt;li]:h-8 [&amp;&gt;li&gt;a]:block [&amp;&gt;li&gt;a]:px-4 [&amp;&gt;li&gt;a]:py-3 [&amp;&gt;li&gt;a]:text-center [&amp;&gt;li&gt;a]:font-medium sm:[&amp;&gt;li&gt;a]:px-2 sm:[&amp;&gt;li&gt;a]:py-1"><li class="col-span-2"><a href="/posts/" class="active-nav">Posts</a></li><li class="col-span-2"><a href="/gallery/">🖼️ 图影</a></li><li class="col-span-2"><a href="/private/">🔒 私密</a></li><li class="col-span-2"><a href="/tags/">Tags</a></li><li class="col-span-2"><a href="/about/">About</a></li><li class="col-span-2"><a href="/archives/" title="Archives" aria-label="Archives" class="group inline-flex items-center gap-1 hover:text-accent focus-outline flex size-full justify-center p-3 sm:relative sm:size-8 sm:p-0"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="hidden sm:absolute sm:top-1/2 sm:left-1/2 sm:block sm:size-6 sm:-translate-x-1/2 sm:-translate-y-1/2" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" /><path d="M3 6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v0a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8M10 12h4" /></svg><span class="sm:sr-only">Archives</span></a></li><li class="col-span-1 flex items-center justify-center"><a href="/search/" title="Search" aria-label="Search" class="group inline-flex items-center gap-1 hover:text-accent focus-outline relative size-8"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="absolute top-1/2 left-1/2 size-6 -translate-x-1/2 -translate-y-1/2" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" /><path d="M3 10a7 7 0 1 0 14 0 7 7 0 1 0-14 0M21 21l-6-6" /></svg><span class="sr-only">Search</span></a></li><li class="col-span-1 flex items-center justify-center"><button id="theme-btn" class="focus-outline hover:[&amp;&gt;svg]:stroke-accent relative size-12 p-4 sm:size-8" title="Toggle theme" aria-label="auto" aria-live="polite"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="absolute top-[50%] left-[50%] translate-[-50%] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" /><path d="M12 3h.393a7.5 7.5 0 0 0 7.92 12.446A9 9 0 1 1 12 2.992z" /></svg><svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="absolute top-[50%] left-[50%] translate-[-50%] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" /><path d="M14.828 14.828a4 4 0 1 0-5.656-5.656 4 4 0 0 0 5.656 5.656M6.343 17.657l-1.414 1.414M6.343 6.343 4.929 4.929M17.657 6.343l1.414-1.414M17.657 17.657l1.414 1.414M4 12H2M12 4V2M20 12h2M12 20v2" /></svg></button></li></ul></nav></div></header><script type="module">function e(){let e=document.querySelector(`#menu-btn`),t=document.querySelector(`#menu-items`),n=document.querySelector(`#menu-icon`),r=document.querySelector(`#close-icon`);if(!e||!t||!n||!r)return;let i=e.dataset.labelOpen??`Open menu`,a=e.dataset.labelClose??`Close menu`;e.addEventListener(`click`,()=>{let o=e.getAttribute(`aria-expanded`)===`true`;e.setAttribute(`aria-expanded`,o?`false`:`true`),e.setAttribute(`aria-label`,o?i:a),t.classList.toggle(`hidden`),t.classList.toggle(`grid`),n.classList.toggle(`hidden`),r.classList.toggle(`hidden`)})}function t(){let e=document.getElementById(`skip-to-content`);e&&e.addEventListener(`click`,e=>{if(e.defaultPrevented||e.metaKey||e.ctrlKey||e.shiftKey||e.button!==0)return;e.preventDefault();let t=document.getElementById(`main-content`);t&&(t.setAttribute(`tabindex`,`-1`),t.addEventListener(`blur`,()=>t.removeAttribute(`tabindex`),{once:!0}),t.focus(),t.scrollIntoView({behavior:`smooth`}))})}e(),document.addEventListener(`astro:after-swap`,e),t(),document.addEventListener(`astro:after-swap`,t);</script><div class="app-layout flex items-center justify-start"><a id="back-button" href="/" class="group inline-flex items-center gap-1 hover:text-accent focus-outline hover:text-foreground/75 -ms-2 mt-8 mb-2"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="inline-block size-6 rtl:rotate-180" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" /><path d="m15 6-6 6 6 6" /></svg><span>Go back</span></a></div><script type="module">function e(){let e=document.querySelector(`#back-button`),t=sessionStorage.getItem(`backUrl`);t&&e&&(e.href=t)}document.addEventListener(`astro:page-load`,e),e();</script><main id="main-content" class="app-layout" data-pagefind-body><h1 style="view-transition-name:financeoptions-trading-sell-put-complete-guide" class="text-accent inline-block text-2xl font-bold sm:text-3xl">玩转期权交易：从东方财富实操到段永平 Sell Put 现金流圣杯完全指南</h1><div class="my-2 flex flex-wrap items-center gap-3"><div class="text-muted-foreground flex items-center gap-x-2"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="inline-block size-6 min-w-5.5" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" /><path d="M4 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zM16 3v4M8 3v4M4 11h16M7 14h.013M10.01 14h.005M13.01 14h.005M16.015 14h.005M13.015 17h.005M7.01 17h.005M10.01 17h.005" /></svg><time class="text-sm sm:text-base" datetime="2026-08-25T05:30:00.000Z">25 Aug, 2026</time></div><span class="text-muted-foreground">|</span><span id="views-counter" class="text-accent font-medium text-sm">👀 读取中...</span><span aria-hidden="true" class="text-muted-foreground max-sm:hidden">|</span><a href="https://github.com/hclg/hclg.github.io/edit/main/src/content/posts/finance/options-trading-sell-put-complete-guide.md" target="_blank" rel="noopener noreferrer" class="hover:text-accent text-muted-foreground flex justify-baseline gap-1.5 max-sm:hidden"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="inline-block" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" /><path d="M7 7H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2v-1" /><path d="M20.385 6.585a2.1 2.1 0 0 0-2.97-2.97L9 12v3h3zM16 5l3 3" /></svg><span>Edit page</span></a></div><!-- 侧边栏/响应式布局：左侧浮动目录 (TOC) + 右侧正文 --><div class="mt-8 flex flex-col lg:flex-row gap-8 items-start relative"><aside class="w-full lg:w-64 shrink-0 lg:sticky lg:top-8 z-10"><details class="rounded-xl border border-accent/20 bg-muted/40 p-4 shadow-xs backdrop-blur-xs" open><summary class="cursor-pointer font-semibold text-base text-accent flex items-center gap-2 select-none border-b border-accent/10 pb-2"><span>📑 文章目录</span></summary><nav class="mt-3 max-h-[70vh] overflow-y-auto pr-1"><ul class="space-y-2 text-xs sm:text-sm"><li class="ps-0 font-medium text-foreground/90"><a href="#-核心目录导览" class="hover:text-accent hover:underline block py-0.5 leading-snug">📑 核心目录导览</a></li><li class="ps-0 font-medium text-foreground/90"><a href="#1-东方财富期权实操买开卖开买平卖平对应表" class="hover:text-accent hover:underline block py-0.5 leading-snug">1. 东方财富期权实操：买开、卖开、买平、卖平对应表</a></li><li class="ps-0 font-medium text-foreground/90"><a href="#2-期权基础四大买卖方式全景解析" class="hover:text-accent hover:underline block py-0.5 leading-snug">2. 期权基础四大买卖方式全景解析</a></li><li class="ps-3 text-muted-foreground"><a href="#-买入认购-buy-call--赌资产大暴涨" class="hover:text-accent hover:underline block py-0.5 leading-snug">① 买入认购 (Buy Call) —— 赌资产大暴涨</a></li><li class="ps-3 text-muted-foreground"><a href="#-卖出认购-sell-call--备兑--股票高位收租与止盈" class="hover:text-accent hover:underline block py-0.5 leading-snug">② 卖出认购 (Sell Call / 备兑) —— 股票高位收租与止盈</a></li><li class="ps-3 text-muted-foreground"><a href="#-买入认沽-buy-put--买防灾意外险--赌单边暴跌" class="hover:text-accent hover:underline block py-0.5 leading-snug">③ 买入认沽 (Buy Put) —— 买防灾意外险 / 赌单边暴跌</a></li><li class="ps-3 text-muted-foreground"><a href="#-卖出认沽-sell-put---保险公司卖保险--段永平打折建仓" class="hover:text-accent hover:underline block py-0.5 leading-snug">④ 卖出认沽 (Sell Put) ⭐ —— 保险公司卖保险 / 段永平打折建仓</a></li><li class="ps-0 font-medium text-foreground/90"><a href="#3-为什么说卖出认沽-sell-put是价值投资者的现金流圣杯" class="hover:text-accent hover:underline block py-0.5 leading-snug">3. 为什么说“卖出认沽 (Sell Put)”是价值投资者的现金流圣杯？</a></li><li class="ps-0 font-medium text-foreground/90"><a href="#4-真实盘口算账300etf-510300-卖开实战精算" class="hover:text-accent hover:underline block py-0.5 leading-snug">4. 真实盘口算账：300ETF (510300) 卖开实战精算</a></li><li class="ps-3 text-muted-foreground"><a href="#两种最终结算结局" class="hover:text-accent hover:underline block py-0.5 leading-snug">两种最终结算结局：</a></li><li class="ps-0 font-medium text-foreground/90"><a href="#5-期权合约规则与参数速查" class="hover:text-accent hover:underline block py-0.5 leading-snug">5. 期权合约规则与参数速查</a></li><li class="ps-3 text-muted-foreground"><a href="#-合约乘数1-张对应多少份" class="hover:text-accent hover:underline block py-0.5 leading-snug">① 合约乘数（1 张对应多少份）</a></li><li class="ps-3 text-muted-foreground"><a href="#-交易费用与成本" class="hover:text-accent hover:underline block py-0.5 leading-snug">② 交易费用与成本</a></li><li class="ps-0 font-medium text-foreground/90"><a href="#6-风控防守与回血指南跌破了怎么修补" class="hover:text-accent hover:underline block py-0.5 leading-snug">6. 风控防守与回血指南：跌破了怎么修补？</a></li><li class="ps-3 text-muted-foreground"><a href="#️-终极解套大招转做备兑认购-covered-call收租" class="hover:text-accent hover:underline block py-0.5 leading-snug">🛠️ 终极解套大招：转做“备兑认购 (Covered Call)”收租</a></li><li class="ps-3 text-muted-foreground"><a href="#-滚动移仓-roll-down--out" class="hover:text-accent hover:underline block py-0.5 leading-snug">🔄 滚动移仓 (Roll Down &amp; Out)</a></li><li class="ps-0 font-medium text-foreground/90"><a href="#7-常见误区与新手避坑-qa" class="hover:text-accent hover:underline block py-0.5 leading-snug">7. 常见误区与新手避坑 Q&amp;A</a></li><li class="ps-3 text-muted-foreground"><a href="#q1卖开-put-中途跌破行权价会被买家提前强制接盘吗" class="hover:text-accent hover:underline block py-0.5 leading-snug">Q1：卖开 Put 中途跌破行权价，会被买家提前强制接盘吗？</a></li><li class="ps-3 text-muted-foreground"><a href="#q2卖开-put-必须持有到最后一天吗" class="hover:text-accent hover:underline block py-0.5 leading-snug">Q2：卖开 Put 必须持有到最后一天吗？</a></li><li class="ps-3 text-muted-foreground"><a href="#q3为什么卖开成交后总资产不仅没涨反而显示少了几块钱" class="hover:text-accent hover:underline block py-0.5 leading-snug">Q3：为什么卖开成交后，总资产不仅没涨反而显示少了几块钱？</a></li><li class="ps-3 text-muted-foreground"><a href="#q4做-sell-put-最核心的铁律是什么" class="hover:text-accent hover:underline block py-0.5 leading-snug">Q4：做 Sell Put 最核心的铁律是什么？</a></li></ul></nav></details></aside><article id="article" class="w-full flex-1 min-w-0 app-prose prose-pre:bg-(--shiki-light-bg) dark:prose-pre:bg-(--shiki-dark-bg)"><h2 id="-核心目录导览">📑 核心目录导览</h2>
+<ol>
+<li><a href="#1-%E4%B8%9C%E6%96%B9%E8%B4%A2%E5%AF%8C%E6%9C%9F%E6%9D%83%E5%AE%9E%E6%93%8D%E4%B9%B0%E5%BC%80%E5%8D%96%E5%BC%80%E4%B9%B0%E5%B9%B3%E5%8D%96%E5%B9%B3%E5%AF%B9%E5%BA%94%E8%A1%A8">东方财富期权实操：买开、卖开、买平、卖平对应表</a></li>
+<li><a href="#2-%E6%9C%9F%E6%9D%83%E5%9F%BA%E7%A1%80%E5%9B%9B%E5%A4%A7%E4%B9%B0%E5%8D%96%E6%96%B9%E5%BC%8F%E5%85%A8%E6%99%AF%E8%A7%A3%E6%9E%90">期权基础四大买卖方式全景解析</a></li>
+<li><a href="#3-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%AF%B4%E5%8D%96%E5%87%BA%E8%AE%A4%E6%B2%BD-sell-put%E6%98%AF%E4%BB%B7%E5%80%BC%E6%8A%95%E8%B5%84%E8%80%85%E7%9A%84%E7%8E%B0%E9%87%91%E6%B5%81%E5%9C%A3%E6%9D%AF">为什么说“卖出认沽 (Sell Put)”是价值投资者的现金流圣杯？</a></li>
+<li><a href="#4-%E7%9C%9F%E5%AE%9E%E7%9B%98%E5%8F%A3%E7%AE%97%E8%B4%A6300etf-510300-%E5%8D%96%E5%BC%80%E5%AE%9E%E6%88%98%E7%B2%BE%E7%AE%97">真实盘口算账：300ETF (510300) 卖开实战精算</a></li>
+<li><a href="#5-%E6%9C%9F%E6%9D%83%E5%90%88%E7%BA%A6%E8%A7%84%E5%88%99%E4%B8%8E%E5%8F%82%E6%95%B0%E9%80%9F%E6%9F%A5">期权合约规则与参数速查</a></li>
+<li><a href="#6-%E9%A3%8E%E6%8E%A7%E9%98%B2%E5%AE%88%E4%B8%8E%E5%9B%9E%E8%A1%80%E6%8C%87%E5%8D%97%E8%B7%8C%E7%A0%B4%E4%BA%86%E6%80%8E%E4%B9%88%E4%BF%AE%E8%A1%A5">风控防守与回血指南：跌破了怎么修补？</a></li>
+<li><a href="#7-%E5%B8%B8%E8%A7%81%E8%AF%AF%E5%8C%BA%E4%B8%8E%E6%96%B0%E6%89%8B%E9%81%BF%E5%9D%91-qa">常见误区与新手避坑 Q&#x26;A</a></li>
+</ol>
+<hr>
+<h2 id="1-东方财富期权实操买开卖开买平卖平对应表">1. 东方财富期权实操：买开、卖开、买平、卖平对应表</h2>
+<p>在进入期权交易软件（如东方财富手机/电脑客户端、仿真交易软件）时，界面上主要有 <strong>4 个核心操作指令</strong>。它们分别对应你在期权市场中的不同动作：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">软件操作指令</th><th align="left">简称</th><th align="left">你的动作与角色</th><th align="left">资金/持仓变动</th><th align="left">典型应用场景</th></tr></thead><tbody><tr><td align="left"><strong>买入开仓</strong></td><td align="left"><strong>买开</strong></td><td align="left"><strong>花钱买入期权（成为买方）</strong></td><td align="left">账户现金减少（支付权利金），手里多出一张多头期权合约</td><td align="left">① 看好短期暴涨买入认购（Buy Call）<br>② 担忧大盘暴跌买入认沽对冲（Buy Put）</td></tr><tr><td align="left"><strong>卖出开仓</strong> ⭐</td><td align="left"><strong>卖开</strong></td><td align="left"><strong>卖出期权收取现金（成为卖方）</strong></td><td align="left">账户现金<strong>瞬间增加（收到权利金）</strong>，同时冻结一部分履约保证金，手里多出一张空头合约</td><td align="left">① <strong>段永平 Sell Put 策略</strong>（卖出认沽收利息/打折抄底）<br>② 持有股票时做备兑卖出认购（Covered Call）</td></tr><tr><td align="left"><strong>买入平仓</strong></td><td align="left"><strong>买平</strong></td><td align="left"><strong>买回之前卖出的期权进行注销</strong></td><td align="left">支付当前市值的现金买回合约，<strong>原先被冻结的保证金瞬间全额释放</strong></td><td align="left"><strong>卖方提前止盈或止损</strong>（例如已赚取 70%~80% 保费，提前买平离场）</td></tr><tr><td align="left"><strong>卖出平仓</strong></td><td align="left"><strong>卖平</strong></td><td align="left"><strong>卖掉之前买入的期权进行结清</strong></td><td align="left">手里的多头期权注销，收回当前期权市值的现金</td><td align="left"><strong>买方止盈或止损</strong>（例如买入的期权暴涨数倍，转手卖平套现）</td></tr></tbody></table>
+<hr>
+<h2 id="2-期权基础四大买卖方式全景解析">2. 期权基础四大买卖方式全景解析</h2>
+<p>期权市场由两个方向（<strong>看涨认购 Call</strong> / <strong>看跌认沽 Put</strong>）和两个身份（<strong>买方 Buy</strong> / <strong>卖方 Sell</strong>）组合而成：</p>
+<pre class="astro-code astro-code-themes min-light night-owl" style="--shiki-light:#24292eff;--shiki-dark:#d6deeb;--shiki-light-bg:#ffffff;--shiki-dark-bg:#011627; overflow-x: auto;--file-name-offset: -0.75rem;" tabindex="0" data-language="plaintext"><code><span class="line"><span>                       【期权市场的 4 种核心玩法】</span></span>
+<span class="line"><span>                 </span></span>
+<span class="line"><span>                 ┌─────────────────┬─────────────────┐</span></span>
+<span class="line"><span>                 │  认购期权 (Call) │  认沽期权 (Put)  │</span></span>
+<span class="line"><span>                 │    [ 看 涨 ]     │    [ 看 跌 ]     │</span></span>
+<span class="line"><span>  ┌──────────────┼─────────────────┼─────────────────┤</span></span>
+<span class="line"><span>  │ 买方 (Buy)   │  ① 买入认购      │  ③ 买入认沽      │</span></span>
+<span class="line"><span>  │ [ 付钱买权利 ] │  (Buy Call)     │  (Buy Put)      │</span></span>
+<span class="line"><span>  ├──────────────┼─────────────────┼─────────────────┤</span></span>
+<span class="line"><span>  │ 卖方 (Sell)  │  ② 卖出认购      │  ④ 卖出认沽      │</span></span>
+<span class="line"><span>  │ [ 收钱担义务 ] │  (Sell Call)    │  (Sell Put) ⭐  │</span></span>
+<span class="line"><span>  └──────────────┴─────────────────┴─────────────────┘</span></span></code></pre>
+<h3 id="-买入认购-buy-call--赌资产大暴涨">① 买入认购 (Buy Call) —— 赌资产大暴涨</h3>
+<ul>
+<li><strong>生活类比</strong>：支付 2 万元定金，约定一个月后无论房价涨到多少，都有权按 100 万买下房子。</li>
+<li><strong>收益机制</strong>：资产暴涨时收益上不封顶（杠杆极高）；资产不涨或下跌时，最多损失全部定金（权利金）。</li>
+<li><strong>中途平仓</strong>：可随时点击 <strong><code>卖出平仓</code></strong> 套现。</li>
+</ul>
+<h3 id="-卖出认购-sell-call--备兑--股票高位收租与止盈">② 卖出认购 (Sell Call / 备兑) —— 股票高位收租与止盈</h3>
+<ul>
+<li><strong>生活类比</strong>：房东手头有房，收下别人 2 万元定金，承诺一个月内只要涨破 110 万就按 110 万卖给对方。</li>
+<li><strong>收益机制</strong>：横盘或微涨时白赚定金（相当于额外收租，年化 8%~12%）；暴涨时按约定价格止盈卖出股票。</li>
+<li><strong>中途平仓</strong>：可随时点击 <strong><code>买入平仓</code></strong> 解除股票锁定。</li>
+</ul>
+<h3 id="-买入认沽-buy-put--买防灾意外险--赌单边暴跌">③ 买入认沽 (Buy Put) —— 买防灾意外险 / 赌单边暴跌</h3>
+<ul>
+<li><strong>生活类比</strong>：车主每年花 3000 元买全损险，车子报废时保险公司全额赔付。</li>
+<li><strong>收益机制</strong>：标的大暴跌时收益巨大（几倍到几十倍）；平时绝大多数时候因时间流逝而归零。</li>
+<li><strong>中途平仓</strong>：暴跌期权升值时，随时点击 <strong><code>卖出平仓</code></strong> 落袋为安。</li>
+</ul>
+<h3 id="-卖出认沽-sell-put---保险公司卖保险--段永平打折建仓">④ 卖出认沽 (Sell Put) ⭐ —— 保险公司卖保险 / 段永平打折建仓</h3>
+<ul>
+<li><strong>生活类比</strong>：开保险公司收 3000 元保费，承诺车子若跌破某价格则由自己按约定价收购。</li>
+<li><strong>收益机制</strong>：标的资产只要不暴跌（大涨、慢涨、横盘、小跌），<strong>100% 稳赚全部保费（年化 10%~15%）</strong>；若跌破行权价，则以<strong>更低的打折成本接盘优质资产</strong>。</li>
+<li><strong>中途平仓</strong>：赚取绝大部分保费后，随时点击 <strong><code>买入平仓</code></strong> 提前结清并释放保证金。</li>
+</ul>
+<hr>
+<h2 id="3-为什么说卖出认沽-sell-put是价值投资者的现金流圣杯">3. 为什么说“卖出认沽 (Sell Put)”是价值投资者的现金流圣杯？</h2>
+<p>段永平和巴菲特极其推崇 <strong>100% 现金担保的卖出认沽（Cash-Covered Put）</strong> 策略，核心原因在于它彻底颠覆了传统投资中“被动等待”的逻辑：</p>
+<ol>
+<li><strong>变被动等待为主动收租</strong>：传统挂单买股票，不跌到目标价一分钱拿不到；卖 Put 则是“边挂打折单，边按月领取可观利息”。</li>
+<li><strong>胜率极高（85% ~ 95%）</strong>：时间价值（Theta）每天都在自然衰减，时间永远站在卖方这一边。</li>
+<li><strong>极佳的安全垫</strong>：因为开局就收到了权利金，即使最后被行权接盘，实际持仓成本也显著低于市场直接买入价。</li>
+</ol>
+<pre class="astro-code astro-code-themes min-light night-owl" style="--shiki-light:#24292eff;--shiki-dark:#d6deeb;--shiki-light-bg:#ffffff;--shiki-dark-bg:#011627; overflow-x: auto;--file-name-offset: -0.75rem;" tabindex="0" data-language="plaintext"><code><span class="line"><span>【市场走势】         【普通买股票】         【Cash-Covered Sell Put】</span></span>
+<span class="line"><span> 市场大涨 ───────>     赚钱                赚钱 (赚取固定权利金年化)</span></span>
+<span class="line"><span> 市场横盘 ───────>    不赚不亏              赚钱 (白拿全额权利金)</span></span>
+<span class="line"><span> 市场微跌 ───────>     亏损                赚钱 (未跌破行权价全额到手)</span></span>
+<span class="line"><span> 市场大跌 ───────>     严重亏损            打折接盘好资产，成本更低</span></span></code></pre>
+<hr>
+<h2 id="4-真实盘口算账300etf-510300-卖开实战精算">4. 真实盘口算账：300ETF (510300) 卖开实战精算</h2>
+<p>以 2026 年 8 月 A 股市场的 <strong>华泰柏瑞沪深 300ETF（510300）</strong> 实盘期权为例：</p>
+<ul>
+<li><strong>标的现价</strong>：<code>4.670 元 / 份</code></li>
+<li><strong>选择合约</strong>：<code>300ETF沽9月4500</code>（合约代码：<code>10011000</code>）</li>
+<li><strong>行权价 (Strike)</strong>：<code>4.500 元</code>（相比现价便宜 3.64%，处于安全打折区）</li>
+<li><strong>成交单价</strong>：<code>0.0435 元 / 份</code></li>
+<li><strong>合约乘数</strong>：<code>10,000 份 / 张</code></li>
+<li><strong>剩余时间</strong>：<code>30 天</code></li>
+</ul>
+<pre class="astro-code astro-code-themes min-light night-owl" style="--shiki-light:#24292eff;--shiki-dark:#d6deeb;--shiki-light-bg:#ffffff;--shiki-dark-bg:#011627; overflow-x: auto;--file-name-offset: -0.75rem;" tabindex="0" data-language="plaintext"><code><span class="line"><span>                          【单张实盘收支与年化精算】</span></span>
+<span class="line"><span>                          </span></span>
+<span class="line"><span> ┌───────────────────────────┬───────────────────────────────────────────┐</span></span>
+<span class="line"><span> │ 1. 瞬间到账权利金 (收入)  │ 0.0435 × 10,000 = 435.0 元                │</span></span>
+<span class="line"><span> ├───────────────────────────┼───────────────────────────────────────────┤</span></span>
+<span class="line"><span> │ 2. 现金担保本金 (锁定)    │ 4.500 × 10,000 = 45,000.0 元              │</span></span>
+<span class="line"><span> ├───────────────────────────┼───────────────────────────────────────────┤</span></span>
+<span class="line"><span> │ 3. 单期回报率 (30天)      │ 435 / 45,000 = 0.967%                     │</span></span>
+<span class="line"><span> ├───────────────────────────┼───────────────────────────────────────────┤</span></span>
+<span class="line"><span> │ 4. 折算年化收益率         │ 0.967% × (365 / 30) ≈ 11.76%              │</span></span>
+<span class="line"><span> └───────────────────────────┴───────────────────────────────────────────┘</span></span></code></pre>
+<h3 id="两种最终结算结局">两种最终结算结局：</h3>
+<ol>
+<li><strong>到期日 300ETF 价格 ≥ 4.500 元</strong>：合约归零作废，<strong>435 元纯利润 100% 落袋</strong>，4.5 万元现金全额解冻，单月年化 <strong>11.76%</strong> 兑现。</li>
+<li><strong>到期日 300ETF 价格 &#x3C; 4.500 元（如跌至 4.400 元）</strong>：系统自动划扣 4.5 万元现金接盘 10,000 份 300ETF。扣除提前收到的 435 元保费，<strong>实际每股建仓成本仅为 <code>4.4565 元</code></strong>（比开仓时的 4.670 便宜了 4.6%）。</li>
+</ol>
+<hr>
+<h2 id="5-期权合约规则与参数速查">5. 期权合约规则与参数速查</h2>
+<h3 id="-合约乘数1-张对应多少份">① 合约乘数（1 张对应多少份）</h3>
+<ul>
+<li><strong>国内 A 股 ETF 期权</strong>（510300 沪深300、518880 黄金ETF等）：<strong><code>1 张 = 10,000 份</code></strong></li>
+<li><strong>美股股票/ETF 期权</strong>（AAPL、NVDA、QQQ、SPY 等）：<strong><code>1 张 = 100 股</code></strong></li>
+<li><strong>华安黄金 ETF 期权 (518880)</strong>：1 张对应 10,000 份 ETF，在物理意义上<strong>精确对应 100 克足金（Au99.99）</strong>。</li>
+</ul>
+<h3 id="-交易费用与成本">② 交易费用与成本</h3>
+<ul>
+<li><strong>收费机制</strong>：按**“张数”固定收费**，不按成交金额比例计费。</li>
+<li><strong>每张总成本</strong>：交易所规费（1.6 元/张）+ 券商佣金，单边合计通常为 <strong><code>2 元 ~ 5 元 / 张</code></strong>。相比每张数百元的权利金收入，费用占比极低（&#x3C; 1%）。</li>
+</ul>
+<hr>
+<h2 id="6-风控防守与回血指南跌破了怎么修补">6. 风控防守与回血指南：跌破了怎么修补？</h2>
+<p>如果卖出 Put 后市场单边大跌被行权接盘，或账面出现浮亏，可以通过以下成熟策略进行修补与解套：</p>
+<h3 id="️-终极解套大招转做备兑认购-covered-call收租">🛠️ 终极解套大招：转做“备兑认购 (Covered Call)”收租</h3>
+<ul>
+<li><strong>操作</strong>：接盘拿到 10,000 份 ETF 后不要慌，立即在软件中选择 <strong><code>备兑开仓（或卖出开仓）</code></strong> 下个月行权价为接盘成本（如 <code>4.500</code>）的 <strong>认购期权 (Call)</strong>。</li>
+<li><strong>效果</strong>：
+<ul>
+<li>因为手里已有现货股票抵押，<strong>0 额外保证金占用</strong>；</li>
+<li>每月继续稳定收取 <strong>400~600 元</strong> 租金；</li>
+<li>连续收取 3~4 个月保费即可彻底抹平 2000 元级别的浮亏；一旦大盘反弹涨回 4.500，股票解套卖出，白赚全程租金。</li>
+</ul>
+</li>
+</ul>
+<h3 id="-滚动移仓-roll-down--out">🔄 滚动移仓 (Roll Down &#x26; Out)</h3>
+<p>若临近到期不想接盘，可在盘中点击 <strong><code>买入平仓</code></strong> 当月合约，同时在次月卖出更低行权价的合约（如从 9月 4.500 移仓至 10月 4.300），用远期更厚的时间价值补贴当期，拉大安全垫。</p>
+<hr>
+<h2 id="7-常见误区与新手避坑-qa">7. 常见误区与新手避坑 Q&#x26;A</h2>
+<h3 id="q1卖开-put-中途跌破行权价会被买家提前强制接盘吗">Q1：卖开 Put 中途跌破行权价，会被买家提前强制接盘吗？</h3>
+<blockquote><p><strong>答：不会。</strong> 国内 ETF 期权全为<strong>欧式期权</strong>，买方只有在到期日当天收盘后才有权行权，中途任何时间都无法提前将股票塞给你。</p></blockquote>
+<h3 id="q2卖开-put-必须持有到最后一天吗">Q2：卖开 Put 必须持有到最后一天吗？</h3>
+<blockquote><p><strong>答：不需要。</strong> 期权每秒都在自由交易。当持仓已经赚到 70%~80% 的保费时，可随时在盘中点击 <strong><code>买入平仓</code></strong> 提前锁定利润并释放保证金。</p></blockquote>
+<h3 id="q3为什么卖开成交后总资产不仅没涨反而显示少了几块钱">Q3：为什么卖开成交后，总资产不仅没涨反而显示少了几块钱？</h3>
+<blockquote><p><strong>答：记账方式所致。</strong> 权利金现金已实增到账，但未到期前该合约被系统记为一笔“平仓负债”。由于买卖盘口存在微小点差，开仓瞬间会显示轻微浮动负数。随着时间流逝（Theta 蒸发），负债将逐步归零，总资产将完整体现全部利润。</p></blockquote>
+<h3 id="q4做-sell-put-最核心的铁律是什么">Q4：做 Sell Put 最核心的铁律是什么？</h3>
+<blockquote><p><strong>答：严格执行 100% 现金担保（Cash-Covered），坚决不碰保证金杠杆，且只做永不破产的宽基/硬资产（如 510300、518880、SPY、QQQ）。</strong></p></blockquote></article></div><hr class="my-8 border-dashed"><a href="https://github.com/hclg/hclg.github.io/edit/main/src/content/posts/finance/options-trading-sell-put-complete-guide.md" target="_blank" rel="noopener noreferrer" class="hover:text-accent text-muted-foreground flex justify-baseline gap-1.5 sm:hidden"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="inline-block" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" /><path d="M7 7H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2v-1" /><path d="M20.385 6.585a2.1 2.1 0 0 0-2.97-2.97L9 12v3h3zM16 5l3 3" /></svg><span>Edit page</span></a><div id="btt-btn-container" class="fixed inset-e-4 bottom-8 z-50 md:sticky md:inset-e-auto md:float-end md:me-1 translate-y-14 opacity-0 transition duration-500"><button data-button="back-to-top" class="group bg-background relative px-2 py-1 size-14 rounded-full shadow-xl md:h-8 md:w-fit md:rounded-md md:shadow-none md:focus-visible:rounded-none md:bg-background/35 md:bg-clip-padding md:backdrop-blur-lg"><span id="progress-indicator" class="absolute inset-0 -z-10 block size-14 scale-110 rounded-full bg-transparent md:hidden md:h-8 md:rounded-md"></span><svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="inline-block rotate-90 md:hidden" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" /><path d="M5 12h14M5 12l6 6M5 12l6-6" /></svg><span class="group-hover:text-accent sr-only text-sm md:not-sr-only"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="inline-block size-4" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" /><path d="M12 5v14M16 9l-4-4M8 9l4-4" /></svg>Back to top</span></button></div><script data-astro-rerun>
+  function backToTop() {
+    const rootElement = document.documentElement;
+    const btnContainer = document.querySelector("#btt-btn-container");
+    const backToTopBtn = document.querySelector("[data-button='back-to-top']");
+    const progressIndicator = document.querySelector("#progress-indicator");
+
+    if (!rootElement || !btnContainer || !backToTopBtn || !progressIndicator)
+      return;
+
+    backToTopBtn.addEventListener("click", () => {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    });
+
+    let lastVisible = null;
+    function handleScroll() {
+      const scrollTotal = rootElement.scrollHeight - rootElement.clientHeight;
+      const scrollTop = rootElement.scrollTop;
+      const scrollPercent = Math.floor((scrollTop / scrollTotal) * 100);
+
+      progressIndicator.style.setProperty(
+        "background-image",
+        `conic-gradient(var(--accent), var(--accent) ${scrollPercent}%, transparent ${scrollPercent}%)`
+      );
+
+      const isVisible = scrollTop / scrollTotal > 0.3;
+
+      if (isVisible !== lastVisible) {
+        btnContainer.classList.toggle("opacity-100", isVisible);
+        btnContainer.classList.toggle("translate-y-0", isVisible);
+        btnContainer.classList.toggle("opacity-0", !isVisible);
+        btnContainer.classList.toggle("translate-y-14", !isVisible);
+        lastVisible = isVisible;
+      }
+    }
+
+    let ticking = false;
+    document.addEventListener("scroll", () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+  }
+  backToTop();
+</script><ul class="mt-4 mb-8 flex flex-wrap gap-4 sm:my-8"><li><a data-astro-transition-scope="astro-bztu2lml-1" href="/tags/finance/" class="flex items-center gap-0.5 border-foreground border-b-2 border-dashed hover:border-accent hover:text-accent hover:-mt-0.5 focus-visible:text-accent focus-visible:border-none text-sm"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="opacity-80 size-4" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" /><path d="M5 9h14M5 15h14M11 4 7 20M17 4l-4 16" /></svg>finance</a></li><li><a data-astro-transition-scope="astro-bztu2lml-2" href="/tags/理财/" class="flex items-center gap-0.5 border-foreground border-b-2 border-dashed hover:border-accent hover:text-accent hover:-mt-0.5 focus-visible:text-accent focus-visible:border-none text-sm"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="opacity-80 size-4" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" /><path d="M5 9h14M5 15h14M11 4 7 20M17 4l-4 16" /></svg>理财</a></li><li><a data-astro-transition-scope="astro-bztu2lml-3" href="/tags/期权/" class="flex items-center gap-0.5 border-foreground border-b-2 border-dashed hover:border-accent hover:text-accent hover:-mt-0.5 focus-visible:text-accent focus-visible:border-none text-sm"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="opacity-80 size-4" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" /><path d="M5 9h14M5 15h14M11 4 7 20M17 4l-4 16" /></svg>期权</a></li><li><a data-astro-transition-scope="astro-bztu2lml-4" href="/tags/投资策略/" class="flex items-center gap-0.5 border-foreground border-b-2 border-dashed hover:border-accent hover:text-accent hover:-mt-0.5 focus-visible:text-accent focus-visible:border-none text-sm"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="opacity-80 size-4" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" /><path d="M5 9h14M5 15h14M11 4 7 20M17 4l-4 16" /></svg>投资策略</a></li><li><a data-astro-transition-scope="astro-bztu2lml-5" href="/tags/段永平/" class="flex items-center gap-0.5 border-foreground border-b-2 border-dashed hover:border-accent hover:text-accent hover:-mt-0.5 focus-visible:text-accent focus-visible:border-none text-sm"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="opacity-80 size-4" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" /><path d="M5 9h14M5 15h14M11 4 7 20M17 4l-4 16" /></svg>段永平</a></li></ul><div class="flex flex-none flex-col items-center justify-center gap-1 md:items-start"><span class="italic">Share this post:</span><div class="text-center"><a href="https://x.com/intent/post?url=https://hclg.github.io/posts/finance/options-trading-sell-put-complete-guide/" title="Share this post on X" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-1 hover:text-accent scale-90 p-2 hover:rotate-6 sm:p-1"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" /><path d="m4 4 11.733 16H20L8.267 4zM4 20l6.768-6.768m2.46-2.46L20 4" /></svg><span class="sr-only">Share this post on X</span></a><a href="https://t.me/share/url?url=https://hclg.github.io/posts/finance/options-trading-sell-put-complete-guide/" title="Share this post on Telegram" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-1 hover:text-accent scale-90 p-2 hover:rotate-6 sm:p-1"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" /><path d="m15 10-4 4 6 6 4-16-18 7 4 2 2 6 3-4" /></svg><span class="sr-only">Share this post on Telegram</span></a></div></div><hr class="my-8 border-dashed"><div data-pagefind-ignore class="my-8 grid grid-cols-1 gap-6 sm:grid-cols-2"><a href="/posts/cogito/cogito-ergo-sum-02/" class="flex w-full gap-1 hover:opacity-75"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="inline-block flex-none rtl:rotate-180" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" /><path d="M5 12h14M5 12l6 6M5 12l6-6" /></svg><div><span>Previous Post</span><div class="text-accent/85 text-sm">从量子引力到硅基永生：关于未来的六重终极推演</div></div></a></div><!-- Giscus 评论区对接 --><section class="mt-10"><h2 class="text-2xl font-semibold mb-4 text-accent">💬 互动评论</h2><div class="giscus"></div><script src="https://giscus.app/client.js" data-repo="hclg/hclg.github.io" data-repo-id="MDEwOlJlcG9zaXRvcnkyNDAxNjA1Mzc=" data-category="General" data-category-id="DIC_kwDODlCPGc4DDSVv" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="preferred_color_scheme" data-lang="zh-CN" crossorigin="anonymous" async>
+      </script></section><!-- AWS Sydney Lambda 统计动态页面阅读量（预留接口与容错） --><script data-slug="/finance/options-trading-sell-put-complete-guide">
+      async function fetchViews() {
+        const slug = document.currentScript.getAttribute('data-slug');
+        const counterEl = document.getElementById('views-counter');
+        if (!counterEl) return;
+        try {
+          const res = await fetch(`https://2k4h5wqi4k5bj4pnlooo4srouq0ipbcx.lambda-url.ap-southeast-2.on.aws/?slug=${encodeURIComponent(slug)}`);
+          const data = await res.json();
+          if (data && data.views !== undefined) {
+            counterEl.innerText = `👀 ${data.views} 次阅读`;
+          } else {
+            counterEl.innerText = `👀 1 次阅读`;
+          }
+        } catch (e) {
+          counterEl.innerText = `👀 1 次阅读`;
+        }
+      }
+      fetchViews();
+    </script></main><footer class="app-layout mt-auto"><div class="border-border flex flex-col items-center justify-between border-t py-6 sm:flex-row-reverse sm:py-4"><div class="flex flex-wrap items-center gap-1"><a href="https://github.com/hclg" title="玄冥与彼岸 on Github" class="group inline-flex items-center gap-1 hover:text-accent p-2 hover:rotate-6 sm:p-1"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" /><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21" /></svg><span class="sr-only">玄冥与彼岸 on Github</span></a></div><div class="my-2 flex flex-col items-center whitespace-nowrap sm:flex-row"><span>Copyright &#169; 2026</span><span class="hidden sm:inline">&nbsp;|&nbsp;</span><span>All rights reserved.</span></div></div></footer><script type="module">var e=`theme`,t=`light`,n=`dark`;function r(){return localStorage.getItem(e)||(window.matchMedia(`(prefers-color-scheme: dark)`).matches?n:t)}var i=window.__theme?.value??r();function a(){localStorage.setItem(e,i),o()}function o(){let e=document.firstElementChild;e?.setAttribute(`data-theme`,i),e?.classList.toggle(`dark`,i===n),document.querySelector(`#theme-btn`)?.setAttribute(`aria-label`,i);let t=window.getComputedStyle(document.body).backgroundColor;document.querySelector(`meta[name='theme-color']`)?.setAttribute(`content`,t)}function s(){o(),document.querySelector(`#theme-btn`)?.addEventListener(`click`,()=>{i=i===t?n:t,a()})}s(),document.addEventListener(`astro:after-swap`,s),document.addEventListener(`astro:before-swap`,e=>{let t=document.querySelector(`meta[name='theme-color']`)?.getAttribute(`content`);t&&e.newDocument.querySelector(`meta[name='theme-color']`)?.setAttribute(`content`,t)}),window.matchMedia(`(prefers-color-scheme: dark)`).addEventListener(`change`,({matches:e})=>{i=e?n:t,a()});</script></body></html><script data-astro-rerun>
+  function createProgressBar() {
+    const progressContainer = document.createElement("div");
+    progressContainer.className =
+      "progress-container fixed top-0 z-10 h-1 w-full bg-background";
+
+    const progressBar = document.createElement("div");
+    progressBar.className = "progress-bar h-1 w-0 bg-accent";
+    progressBar.id = "myBar";
+
+    progressContainer.appendChild(progressBar);
+    document.body.appendChild(progressContainer);
+  }
+  createProgressBar();
+
+  function updateScrollProgress() {
+    document.addEventListener("scroll", () => {
+      const winScroll =
+        document.body.scrollTop || document.documentElement.scrollTop;
+      const height =
+        document.documentElement.scrollHeight -
+        document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      if (document) {
+        const myBar = document.getElementById("myBar");
+        if (myBar) {
+          myBar.style.width = scrolled + "%";
+        }
+      }
+    });
+  }
+  updateScrollProgress();
+
+  function addHeadingLinks() {
+    const headings = Array.from(
+      document.querySelectorAll("h2, h3, h4, h5, h6")
+    );
+    for (const heading of headings) {
+      heading.classList.add("group");
+      const link = document.createElement("a");
+      link.className =
+        "heading-link ms-2 no-underline opacity-75 md:opacity-0 md:group-hover:opacity-100 md:focus:opacity-100";
+      link.href = "#" + heading.id;
+
+      const span = document.createElement("span");
+      span.ariaHidden = "true";
+      span.innerText = "#";
+      link.appendChild(span);
+      heading.appendChild(link);
+    }
+  }
+  addHeadingLinks();
+
+  function attachCopyButtons() {
+    const copyButtonLabel = "Copy";
+    const codeBlocks = Array.from(document.querySelectorAll("pre"));
+
+    for (const codeBlock of codeBlocks) {
+      const wrapper = document.createElement("div");
+      wrapper.style.position = "relative";
+
+      const computedStyle = getComputedStyle(codeBlock);
+      const hasFileNameOffset =
+        computedStyle.getPropertyValue("--file-name-offset").trim() !== "";
+
+      const topClass = hasFileNameOffset
+        ? "top-(--file-name-offset)"
+        : "-top-3";
+
+      const copyButton = document.createElement("button");
+      copyButton.className = `copy-code absolute end-3 ${topClass} rounded bg-muted border border-muted px-2 py-1 text-xs leading-4 text-foreground font-medium`;
+      copyButton.innerHTML = copyButtonLabel;
+      codeBlock.setAttribute("tabindex", "0");
+      codeBlock.appendChild(copyButton);
+
+      codeBlock?.parentNode?.insertBefore(wrapper, codeBlock);
+      wrapper.appendChild(codeBlock);
+
+      copyButton.addEventListener("click", async () => {
+        await copyCode(codeBlock, copyButton);
+      });
+    }
+
+    async function copyCode(block, button) {
+      const code = block.querySelector("code");
+      const text = code?.innerText;
+
+      await navigator.clipboard.writeText(text ?? "");
+
+      button.innerText = "Copied";
+
+      setTimeout(() => {
+        button.innerText = copyButtonLabel;
+      }, 700);
+    }
+  }
+  attachCopyButtons();
+
+  /** Accessible image lightbox for article images. */
+  function initLightbox() {
+    const article = document.getElementById("article");
+    if (!article) return;
+
+    const prefersReducedMotion = () =>
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    let overlay = null;
+    let lastFocused = null;
+
+    requestAnimationFrame(() => {
+      const images = Array.from(article.querySelectorAll("img"));
+      for (const image of images) {
+        if (image.closest("a")) continue;
+        image.setAttribute("role", "button");
+        image.setAttribute("tabindex", "0");
+        image.setAttribute("aria-haspopup", "dialog");
+        image.setAttribute(
+          "aria-label",
+          image.alt ? `Zoom image: ${image.alt}` : "Zoom image"
+        );
+      }
+    });
+
+    function open(src, alt, trigger) {
+      if (overlay) return;
+      lastFocused = trigger ?? document.activeElement;
+
+      overlay = document.createElement("div");
+      overlay.setAttribute("role", "dialog");
+      overlay.setAttribute("aria-modal", "true");
+      overlay.setAttribute(
+        "aria-label",
+        alt ? `Image preview: ${alt}` : "Image preview"
+      );
+      overlay.className =
+        "fixed inset-0 z-50 flex cursor-zoom-out items-center justify-center bg-black/70 backdrop-blur-sm opacity-0 transition-opacity duration-200 motion-reduce:transition-none";
+
+      const closeButton = document.createElement("button");
+      closeButton.type = "button";
+      closeButton.setAttribute("aria-label", "Close image preview");
+      closeButton.className =
+        "absolute end-4 top-4 rounded p-2 text-3xl leading-none text-white";
+      closeButton.innerHTML = "&#10005;";
+      closeButton.addEventListener("click", close);
+
+      const image = document.createElement("img");
+      image.src = src;
+      image.alt = "";
+      image.className =
+        "max-h-[90dvh] max-w-[90dvw] cursor-default object-contain";
+
+      overlay.append(closeButton, image);
+      overlay.addEventListener("click", e => {
+        if (e.target === overlay && currentScale <= 1) close();
+      });
+
+      let currentScale = 1;
+      let translateX = 0;
+      let translateY = 0;
+      let initialDist = 0;
+      let initialScale = 1;
+      let panStartX = 0;
+      let panStartY = 0;
+      let panStartTranslateX = 0;
+      let panStartTranslateY = 0;
+      let lastTapTime = 0;
+
+      function applyTransform() {
+        image.style.transform = `scale(${currentScale}) translate(${translateX}px, ${translateY}px)`;
+      }
+
+      function resetTransform() {
+        currentScale = 1;
+        translateX = 0;
+        translateY = 0;
+        image.style.transform = "";
+      }
+
+      overlay.addEventListener(
+        "touchstart",
+        e => {
+          const t = e.touches;
+          if (t.length === 2) {
+            initialDist = Math.hypot(
+              t[1].clientX - t[0].clientX,
+              t[1].clientY - t[0].clientY
+            );
+            initialScale = currentScale;
+          } else if (t.length === 1) {
+            const now = Date.now();
+            if (now - lastTapTime < 300) {
+              e.preventDefault();
+              if (currentScale > 1) {
+                resetTransform();
+              } else {
+                currentScale = 2;
+                translateX = 0;
+                translateY = 0;
+                applyTransform();
+              }
+              lastTapTime = 0;
+              panStartX = t[0].clientX;
+              panStartY = t[0].clientY;
+              panStartTranslateX = translateX;
+              panStartTranslateY = translateY;
+            } else {
+              lastTapTime = now;
+              if (currentScale > 1) {
+                panStartX = t[0].clientX;
+                panStartY = t[0].clientY;
+                panStartTranslateX = translateX;
+                panStartTranslateY = translateY;
+              }
+            }
+          }
+        },
+        { passive: false }
+      );
+
+      overlay.addEventListener(
+        "touchmove",
+        e => {
+          const t = e.touches;
+          if (t.length === 2) {
+            e.preventDefault();
+            const dist = Math.hypot(
+              t[1].clientX - t[0].clientX,
+              t[1].clientY - t[0].clientY
+            );
+            currentScale = Math.min(
+              4,
+              Math.max(1, initialScale * (dist / initialDist))
+            );
+            applyTransform();
+          } else if (t.length === 1) {
+            if (currentScale > 1) {
+              e.preventDefault();
+              translateX =
+                panStartTranslateX + (t[0].clientX - panStartX) / currentScale;
+              translateY =
+                panStartTranslateY + (t[0].clientY - panStartY) / currentScale;
+              const maxX = Math.max(
+                0,
+                (image.clientWidth - overlay.clientWidth / currentScale) / 2
+              );
+              const maxY = Math.max(
+                0,
+                (image.clientHeight - overlay.clientHeight / currentScale) / 2
+              );
+              translateX = Math.min(maxX, Math.max(-maxX, translateX));
+              translateY = Math.min(maxY, Math.max(-maxY, translateY));
+              applyTransform();
+            } else {
+              e.preventDefault();
+            }
+          }
+        },
+        { passive: false }
+      );
+
+      overlay.addEventListener("touchend", e => {
+        if (e.touches.length === 0 && currentScale <= 1.05) {
+          resetTransform();
+        }
+      });
+
+      overlay.addEventListener("touchcancel", e => {
+        if (e.touches.length === 0 && currentScale <= 1.05) {
+          resetTransform();
+        }
+      });
+
+      document.body.appendChild(overlay);
+      document.body.style.overflow = "hidden";
+      document.addEventListener("keydown", onKeyDown);
+      window.__closeLightbox = close;
+
+      requestAnimationFrame(() => overlay?.classList.add("opacity-100"));
+      closeButton.focus();
+    }
+
+    function close() {
+      if (!overlay) return;
+      const el = overlay;
+      overlay = null;
+      window.__closeLightbox = null;
+
+      document.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = "";
+      lastFocused?.focus();
+      lastFocused = null;
+
+      if (prefersReducedMotion()) {
+        el.remove();
+        return;
+      }
+      const remove = () => el.remove();
+      el.addEventListener("transitionend", remove, { once: true });
+      setTimeout(remove, 250);
+      el.classList.remove("opacity-100");
+    }
+
+    function onKeyDown(e) {
+      if (e.key === "Escape") {
+        close();
+      } else if (e.key === "Tab") {
+        trapFocus(e);
+      }
+    }
+
+    function trapFocus(e) {
+      if (!overlay) return;
+      const focusables = overlay.querySelectorAll(
+        'a[href], button, [tabindex]:not([tabindex="-1"])'
+      );
+      if (focusables.length === 0) return;
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+
+    function triggerFromEvent(e) {
+      const image = e.target.closest("img");
+      if (!image || !article.contains(image) || image.closest("a")) return null;
+      return image;
+    }
+
+    function activate(image) {
+      open(image.currentSrc || image.src, image.alt, image);
+    }
+
+    article.addEventListener("click", e => {
+      const image = triggerFromEvent(e);
+      if (!image) return;
+      e.preventDefault();
+      activate(image);
+    });
+
+    article.addEventListener("keydown", e => {
+      if (e.key !== "Enter" && e.key !== " " && e.key !== "Spacebar") return;
+      const image = triggerFromEvent(e);
+      if (!image) return;
+      e.preventDefault();
+      activate(image);
+    });
+  }
+  initLightbox();
+
+  if (!window.__lightboxSwapBound) {
+    window.__lightboxSwapBound = true;
+    document.addEventListener("astro:before-swap", () =>
+      window.__closeLightbox?.()
+    );
+  }
+
+  document.addEventListener("astro:after-swap", () =>
+    window.scrollTo({ left: 0, top: 0, behavior: "instant" })
+  );
+</script>
