@@ -42,23 +42,29 @@ description: 系统拆解期权市场的四大核心操作（买开/卖开/买�
 
 期权市场由两个方向（**看涨认购 Call** / **看跌认沽 Put**）和两个身份（**买方 Buy** / **卖方 Sell**）组合而成：
 
-<div class="my-6">
-  <div class="flex items-center justify-between p-3 bg-muted/40 rounded-t-xl border border-b-0 border-border/80">
+<details class="my-6 group rounded-xl border border-border/80 bg-muted/15 shadow-sm overflow-hidden open:shadow-md transition-all duration-300">
+  <summary class="flex items-center justify-between p-3.5 bg-muted/35 hover:bg-muted/50 cursor-pointer list-none select-none transition-colors border-b border-transparent group-open:border-border/80">
     <div class="flex items-center gap-2">
+      <span class="text-base group-open:rotate-90 transition-transform duration-200">▶</span>
       <span class="text-base">🧭</span>
-      <span class="font-bold text-sm sm:text-base text-foreground">期权四象限交互沙盘与动态损益模拟器</span>
+      <span class="font-bold text-sm sm:text-base text-foreground">期权四象限交互沙盘与动态损益模拟器（点击展开/折叠）</span>
     </div>
-    <a href="/tools/options-quadrant/index.html" target="_blank" rel="noopener noreferrer" class="text-xs text-accent hover:underline flex items-center gap-1">
-      全屏独立窗口打开 ↗
-    </a>
+    <div class="flex items-center gap-3">
+      <span class="text-xs px-2 py-0.5 rounded-full bg-accent/15 text-accent font-medium hidden sm:inline-block">交互式沙盘</span>
+      <a href="/tools/options-quadrant/index.html" target="_blank" rel="noopener noreferrer" class="text-xs text-accent hover:underline flex items-center gap-1" onclick="event.stopPropagation()">
+        全屏打开 ↗
+      </a>
+    </div>
+  </summary>
+  <div class="p-0 bg-background">
+    <iframe 
+      src="/tools/options-quadrant/index.html" 
+      class="w-full h-[680px] border-0 bg-background"
+      loading="lazy"
+      title="期权四象限交互损益沙盘"
+    ></iframe>
   </div>
-  <iframe 
-    src="/tools/options-quadrant/index.html" 
-    class="w-full h-[680px] rounded-b-xl border border-border/80 shadow-md bg-background"
-    loading="lazy"
-    title="期权四象限交互损益沙盘"
-  ></iframe>
-</div>
+</details>
 
 | 角色与权利义务 | 📈 看涨认购期权 (Call) | 📉 看跌认沽期权 (Put) |
 | :--- | :--- | :--- |
