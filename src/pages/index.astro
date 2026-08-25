@@ -125,6 +125,26 @@ const homePath = getRelativeLocaleUrl(locale, "");
           </a>
 
           <a
+            href={getRelativeLocaleUrl(locale, "tags/finance")}
+            class="group flex items-center justify-between p-3 rounded-xl border border-amber-500/30 bg-gradient-to-r from-amber-500/10 via-yellow-500/5 to-transparent hover:border-amber-400 hover:bg-amber-500/20 transition-all duration-200 shadow-xs"
+          >
+            <div class="flex items-center gap-3">
+              <span class="text-lg">💰</span>
+              <div>
+                <div class="text-sm font-bold text-amber-400 group-hover:translate-x-0.5 transition-transform">
+                  理财投资
+                </div>
+                <div class="text-[11px] text-muted-foreground mt-0.5">
+                  期权策略与资产增值
+                </div>
+              </div>
+            </div>
+            <span class="text-[10px] font-bold text-amber-300 bg-amber-500/20 px-2 py-0.5 rounded-full border border-amber-400/30">
+              专栏
+            </span>
+          </a>
+
+          <a
             href={getRelativeLocaleUrl(locale, "posts")}
             class="group flex items-center justify-between p-3 rounded-xl border border-border bg-muted/20 hover:bg-muted/50 hover:border-accent/40 transition-all duration-200"
           >
