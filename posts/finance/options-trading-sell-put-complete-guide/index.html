@@ -14,7 +14,7 @@
         // Expose value so theme.ts can skip re-detection.
         window.__theme = { value: theme };
       })();
-    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.2i1RQzKf.js"></script><link rel="stylesheet" href="/_astro/Footer.B2vpVBph.css"><style>@keyframes astroFadeInOut{0%{opacity:1}to{opacity:0}}@keyframes astroFadeIn{0%{opacity:0;mix-blend-mode:plus-lighter}to{opacity:1;mix-blend-mode:plus-lighter}}@keyframes astroFadeOut{0%{opacity:1;mix-blend-mode:plus-lighter}to{opacity:0;mix-blend-mode:plus-lighter}}@keyframes astroSlideFromRight{0%{transform:translate(100%)}}@keyframes astroSlideFromLeft{0%{transform:translate(-100%)}}@keyframes astroSlideToRight{to{transform:translate(100%)}}@keyframes astroSlideToLeft{to{transform:translate(-100%)}}@media (prefers-reduced-motion){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*),[data-astro-transition-scope]{animation:none!important}}
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.2i1RQzKf.js"></script><link rel="stylesheet" href="/_astro/Footer.CRI9qI9p.css"><style>@keyframes astroFadeInOut{0%{opacity:1}to{opacity:0}}@keyframes astroFadeIn{0%{opacity:0;mix-blend-mode:plus-lighter}to{opacity:1;mix-blend-mode:plus-lighter}}@keyframes astroFadeOut{0%{opacity:1;mix-blend-mode:plus-lighter}to{opacity:0;mix-blend-mode:plus-lighter}}@keyframes astroSlideFromRight{0%{transform:translate(100%)}}@keyframes astroSlideFromLeft{0%{transform:translate(-100%)}}@keyframes astroSlideToRight{to{transform:translate(100%)}}@keyframes astroSlideToLeft{to{transform:translate(-100%)}}@media (prefers-reduced-motion){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*),[data-astro-transition-scope]{animation:none!important}}
 </style><style>[data-astro-transition-scope="astro-bztu2lml-1"] { view-transition-name: finance; }@layer astro { ::view-transition-old(finance) { 
 	animation-duration: 180ms;
 	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
@@ -252,18 +252,24 @@
 <hr>
 <h2 id="2-期权基础四大买卖方式全景解析">2. 期权基础四大买卖方式全景解析</h2>
 <p>期权市场由两个方向（<strong>看涨认购 Call</strong> / <strong>看跌认沽 Put</strong>）和两个身份（<strong>买方 Buy</strong> / <strong>卖方 Sell</strong>）组合而成：</p>
-<div class="my-6">
-  <div class="flex items-center justify-between p-3 bg-muted/40 rounded-t-xl border border-b-0 border-border/80">
+<details class="my-6 group rounded-xl border border-border/80 bg-muted/15 shadow-sm overflow-hidden open:shadow-md transition-all duration-300">
+  <summary class="flex items-center justify-between p-3.5 bg-muted/35 hover:bg-muted/50 cursor-pointer list-none select-none transition-colors border-b border-transparent group-open:border-border/80">
     <div class="flex items-center gap-2">
+      <span class="text-base group-open:rotate-90 transition-transform duration-200">▶</span>
       <span class="text-base">🧭</span>
-      <span class="font-bold text-sm sm:text-base text-foreground">期权四象限交互沙盘与动态损益模拟器</span>
+      <span class="font-bold text-sm sm:text-base text-foreground">期权四象限交互沙盘与动态损益模拟器（点击展开/折叠）</span>
     </div>
-    <a href="/tools/options-quadrant/index.html" target="_blank" rel="noopener noreferrer" class="text-xs text-accent hover:underline flex items-center gap-1">
-      全屏独立窗口打开 ↗
-    </a>
+    <div class="flex items-center gap-3">
+      <span class="text-xs px-2 py-0.5 rounded-full bg-accent/15 text-accent font-medium hidden sm:inline-block">交互式沙盘</span>
+      <a href="/tools/options-quadrant/index.html" target="_blank" rel="noopener noreferrer" class="text-xs text-accent hover:underline flex items-center gap-1" onclick="event.stopPropagation()">
+        全屏打开 ↗
+      </a>
+    </div>
+  </summary>
+  <div class="p-0 bg-background">
+    <iframe src="/tools/options-quadrant/index.html" class="w-full h-[680px] border-0 bg-background" loading="lazy" title="期权四象限交互损益沙盘"></iframe>
   </div>
-  <iframe src="/tools/options-quadrant/index.html" class="w-full h-[680px] rounded-b-xl border border-border/80 shadow-md bg-background" loading="lazy" title="期权四象限交互损益沙盘"></iframe>
-</div>
+</details>
 
 
 
