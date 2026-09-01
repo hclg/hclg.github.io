@@ -171,13 +171,7 @@ description: 拒绝特种兵！北京出发，先济南见友喝泉水茶、泡�
     <li><strong>晚上</strong>：睡醒去吃青岛特色电烤肉（<strong>王姐烧烤 / 鑫源电烤肉</strong>），配塑料袋装一厂鲜原浆扎啤。</li>
   </ul>
 
-  <div style="border-radius: 10px; overflow: hidden; border: 1px solid rgba(2, 132, 199, 0.2);">
-    <img src="/assets/travel/day3-laoshan-sea.jpg" alt="崂山沙子口山海实景" style="width: 100%; height: 240px; object-fit: cover; display: block;" />
-    <div style="background: rgba(2, 132, 199, 0.08); padding: 0.6rem 1rem; font-size: 0.85rem; color: #0369a1; display: flex; justify-content: space-between;">
-      <span>🎣 <b>崂山沙子口与最美环海公路</b> · 乘船出海海钓</span>
-      <span>秋季黑头鱼/黄鱼开口黄金期</span>
-    </div>
-  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;margin-top:0.8rem;"><div style="border-radius:10px;overflow:hidden;border:1px solid rgba(2,132,199,0.2);"><img src="/assets/travel/day3-fishing-shore.jpg" alt="渔民推船出海" style="width:100%;height:200px;object-fit:cover;display:block;" /><div style="background:rgba(2,132,199,0.08);padding:0.5rem 0.8rem;font-size:0.8rem;color:#0369a1;">🎣 沙子口码头 · 渔民出海晨钓实景</div></div><div style="border-radius:10px;overflow:hidden;border:1px solid rgba(2,132,199,0.2);"><img src="/assets/travel/day3-steamed-fish.jpg" alt="渔家现烹清蒸活鱼" style="width:100%;height:200px;object-fit:cover;display:block;" /><div style="background:rgba(2,132,199,0.08);padding:0.5rem 0.8rem;font-size:0.8rem;color:#0369a1;">🐟 渔家宴现杀现蒸 · 葱丝酱汁野生黑头鱼</div></div></div>
 </div>
 
 ---
