@@ -20,15 +20,56 @@ description: 拒绝特种兵！北京出发，先济南见友喝泉水茶、泡�
 
 ---
 
-## 🗺️ 全景路线总览
+## 🗺️ 5天4晚 全景路线卡片流
 
-```
-Day 1（北京 ➔ 济南）: 京沪高铁 1.5h ➔ 老友相聚把子肉 ➔ 曲水亭街泉水泡茶 ➔ 商河私汤温泉
-Day 2（济南 ➔ 青岛）: 晨汤自然醒 ➔ 济青高铁 2h ➔ 落地高铁站提车 ➔ 海景酒店+扎啤海鲜
-Day 3（青岛·海钓日）: 睡醒出海海钓 2h ➔ 码头现烹野生战利品 ➔ 下午回房睡大觉 ➔ 电烤肉
-Day 4（青岛·赶海日）: 沿海咖啡早午餐 ➔ 潮汐浅滩赶海挖蛤蜊 ➔ 团岛市场挑活鲜+啤酒屋加工
-Day 5（青岛 ➔ 北京）: 睡醒收拾 ➔ 市场活海鲜加冰封箱 ➔ 站前还车 ➔ 3.5h高铁直达北京蒸海鲜
-```
+<div style="display: flex; flex-direction: column; gap: 1rem; margin: 1.5rem 0;">
+  
+  <div style="background: linear-gradient(135deg, rgba(20, 184, 166, 0.1) 0%, rgba(13, 148, 136, 0.04) 100%); border: 1px solid rgba(20, 184, 166, 0.3); border-radius: 12px; padding: 1.2rem 1.4rem; position: relative; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.6rem;">
+      <span style="background: #0d9488; color: white; font-weight: 700; font-size: 0.85rem; padding: 0.25rem 0.75rem; border-radius: 9999px; letter-spacing: 0.05em;">DAY 1</span>
+      <span style="color: #0f766e; font-weight: 600; font-size: 0.95rem;">📍 北京 ➔ 济南 · 泉城温养</span>
+    </div>
+    <div style="font-weight: 600; font-size: 1.05rem; margin-bottom: 0.4rem; color: var(--color-text-base);">京沪高铁 1.5h ➔ 老友相聚把子肉 ➔ 曲水亭街泉水泡茶 ➔ 商河私汤温泉</div>
+    <div style="font-size: 0.88rem; opacity: 0.85; line-height: 1.5;">✨ 重点体验：曲水亭街沿渠露天茶摊喝泉水茉莉花茶；入住商河独立私汤小院，夜泡纯正天然偏硅酸地热温泉。</div>
+  </div>
+
+  <div style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(37, 99, 235, 0.04) 100%); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 12px; padding: 1.2rem 1.4rem; position: relative; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.6rem;">
+      <span style="background: #2563eb; color: white; font-weight: 700; font-size: 0.85rem; padding: 0.25rem 0.75rem; border-radius: 9999px; letter-spacing: 0.05em;">DAY 2</span>
+      <span style="color: #1d4ed8; font-weight: 600; font-size: 0.95rem;">📍 济南 ➔ 青岛 · 动车赴海</span>
+    </div>
+    <div style="font-weight: 600; font-size: 1.05rem; margin-bottom: 0.4rem; color: var(--color-text-base);">晨汤自然醒 ➔ 济青高铁 2h ➔ 落地高铁站提车 ➔ 海景酒店+扎啤海鲜</div>
+    <div style="font-size: 0.88rem; opacity: 0.85; line-height: 1.5;">✨ 重点体验：睡醒泡晨汤；青岛高铁站地下直取自驾车；入住石老人海景房阳台看海发呆，晚餐配地道原浆鲜扎啤。</div>
+  </div>
+
+  <div style="background: linear-gradient(135deg, rgba(14, 165, 233, 0.1) 0%, rgba(2, 132, 199, 0.04) 100%); border: 1px solid rgba(14, 165, 233, 0.3); border-radius: 12px; padding: 1.2rem 1.4rem; position: relative; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.6rem;">
+      <span style="background: #0284c7; color: white; font-weight: 700; font-size: 0.85rem; padding: 0.25rem 0.75rem; border-radius: 9999px; letter-spacing: 0.05em;">DAY 3</span>
+      <span style="color: #0369a1; font-weight: 600; font-size: 0.95rem;">📍 青岛 · 海钓高光日 🎣</span>
+    </div>
+    <div style="font-weight: 600; font-size: 1.05rem; margin-bottom: 0.4rem; color: var(--color-text-base);">睡醒出海海钓 2h ➔ 码头现烹野生战利品 ➔ 下午回房睡大觉 ➔ 电烤肉</div>
+    <div style="font-size: 0.88rem; opacity: 0.85; line-height: 1.5;">✨ 重点体验：沙子口码头乘小船近海垂钓，连竿起野生黑头鱼；现杀清蒸吃极鲜午餐；下午整整 3 小时黄金午休无打扰。</div>
+  </div>
+
+  <div style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(217, 119, 6, 0.04) 100%); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 12px; padding: 1.2rem 1.4rem; position: relative; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.6rem;">
+      <span style="background: #d97706; color: white; font-weight: 700; font-size: 0.85rem; padding: 0.25rem 0.75rem; border-radius: 9999px; letter-spacing: 0.05em;">DAY 4</span>
+      <span style="color: #b45309; font-weight: 600; font-size: 0.95rem;">📍 青岛 · 赶海与菜市 🌊</span>
+    </div>
+    <div style="font-weight: 600; font-size: 1.05rem; margin-bottom: 0.4rem; color: var(--color-text-base);">沿海咖啡早午餐 ➔ 潮汐浅滩赶海挖蛤蜊 ➔ 团岛市场挑活鲜+啤酒屋加工</div>
+    <div style="font-size: 0.88rem; opacity: 0.85; line-height: 1.5;">✨ 重点体验：会场海滩 1.5h 轻松赶海踩沙；团岛市场亲手淘满黄大梭子蟹与大皮皮虾，对街啤酒屋现蒸大快朵颐。</div>
+  </div>
+
+  <div style="background: linear-gradient(135deg, rgba(168, 85, 247, 0.1) 0%, rgba(147, 51, 234, 0.04) 100%); border: 1px solid rgba(168, 85, 247, 0.3); border-radius: 12px; padding: 1.2rem 1.4rem; position: relative; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.6rem;">
+      <span style="background: #9333ea; color: white; font-weight: 700; font-size: 0.85rem; padding: 0.25rem 0.75rem; border-radius: 9999px; letter-spacing: 0.05em;">DAY 5</span>
+      <span style="color: #7e22ce; font-weight: 600; font-size: 0.95rem;">📍 青岛 ➔ 北京 · 满载而归</span>
+    </div>
+    <div style="font-weight: 600; font-size: 1.05rem; margin-bottom: 0.4rem; color: var(--color-text-base);">睡醒收拾 ➔ 市场活海鲜加冰封箱 ➔ 站前还车 ➔ 3.5h高铁直达北京蒸海鲜</div>
+    <div style="font-size: 0.88rem; opacity: 0.85; line-height: 1.5;">✨ 重点体验：活海鲜打氧保温箱打包；高铁站地下直接还车无缝进站；当晚抵京家里直接上锅开蒸，鲜味无缝衔接！</div>
+  </div>
+
+</div>
 
 ---
 
@@ -45,20 +86,32 @@ Day 5（青岛 ➔ 北京）: 睡醒收拾 ➔ 市场活海鲜加冰封箱 ➔ �
 
 ## 🏨 二、住宿选址与落地租车
 
-### 1. 济南商河（Day 1 · 纯正私汤）
-* **推荐**：商河温泉基地酒店 / 温泉小院独立私汤房型。
-* **特色**：房间自带独立地热泡池，出水温度 50℃+，天然偏硅酸地热矿泉，私密性极佳。
-* **参考费用**：国庆期间约 ¥650 - ¥850 / 晚。
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; margin: 1.2rem 0;">
+  
+  <div style="border: 1px solid var(--color-border); border-radius: 10px; padding: 1.2rem; background: var(--color-card);">
+    <div style="font-weight: 700; font-size: 1.05rem; margin-bottom: 0.5rem; color: #0d9488;">♨️ 济南商河（Day 1 · 纯正私汤）</div>
+    <ul style="margin: 0; padding-left: 1.2rem; font-size: 0.9rem; line-height: 1.6;">
+      <li><strong>推荐酒店</strong>：商河温泉基地酒店 / 温泉小院独立私汤</li>
+      <li><strong>核心特色</strong>：房间自带独立地热泡池，出水温度 50℃+，天然偏硅酸温泉，私密放松</li>
+      <li><strong>参考费用</strong>：国庆期间约 ¥650 - ¥850 / 晚</li>
+    </ul>
+  </div>
 
-### 2. 青岛崂山/石老人（Day 2~4 连住 3 晚 · 告别搬行李）
-* **推荐**：崂山区石老人海水浴场 / 金家岭附近海景酒店（自带大型停车场）。
-* **优势**：避开老城区拥堵与停车难；下楼即是沙滩；自驾去沙子口码头海钓仅需 15 分钟，去会场赶海滩涂 30 分钟。
-* **参考费用**：品质海景房约 ¥600 - ¥900 / 晚，3 晚合计约 ¥1,800 - ¥2,700。
+  <div style="border: 1px solid var(--color-border); border-radius: 10px; padding: 1.2rem; background: var(--color-card);">
+    <div style="font-weight: 700; font-size: 1.05rem; margin-bottom: 0.5rem; color: #0284c7;">🌊 青岛石老人（Day 2~4 · 告别搬家）</div>
+    <ul style="margin: 0; padding-left: 1.2rem; font-size: 0.9rem; line-height: 1.6;">
+      <li><strong>推荐选址</strong>：崂山区石老人海水浴场 / 金家岭附近海景酒店</li>
+      <li><strong>核心优势</strong>：自带大型地下停车场；下楼即海；距海钓码头仅 15 分钟</li>
+      <li><strong>参考费用</strong>：品质海景房约 ¥600 - ¥900 / 晚（3晚连住）</li>
+    </ul>
+  </div>
 
-### 3. 青岛落地租车自驾
+</div>
+
+### 🚗 青岛落地租车指南
 * **取还地点**：青岛北站 / 青岛站 地下停车场（神州/一嗨租车）。
 * **车型推荐**：经济型轿车或紧凑型 SUV（好开好停，山路动力充沛）。
-* **租期与费用**：D2 下午提车 ➔ D5 下午还车（整 3 天），含全险 + 油费约 ¥1,100 - ¥1,300。
+* **租期与费用**：D2 下午提车 ➔ D5 下午还车（整 3 天），含全险 + 油费约 **¥1,100 - ¥1,300**。
 
 ---
 
