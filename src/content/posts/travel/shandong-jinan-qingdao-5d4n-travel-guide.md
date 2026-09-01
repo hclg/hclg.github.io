@@ -22,41 +22,7 @@ description: 拒绝特种兵！北京出发，先济南见友喝泉水茶、泡�
 
 ## 🗺️ 5天4晚 极简慢调路线图
 
-<div style="background: var(--color-card); border: 1px solid var(--color-border); border-radius: 14px; padding: 1.2rem 1.5rem; margin: 1.2rem 0; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem;">
-    
-    <div style="border-left: 3px solid #0d9488; padding-left: 0.8rem;">
-      <div style="font-size: 0.75rem; font-weight: 800; color: #0d9488; letter-spacing: 0.05em;">DAY 1 · 泉城温养</div>
-      <div style="font-weight: 700; font-size: 0.95rem; margin: 0.2rem 0;">北京 ➔ 济南</div>
-      <div style="font-size: 0.82rem; opacity: 0.8; line-height: 1.4;">把子肉 · 曲水亭泉水茶 · 商河私汤</div>
-    </div>
-
-    <div style="border-left: 3px solid #2563eb; padding-left: 0.8rem;">
-      <div style="font-size: 0.75rem; font-weight: 800; color: #2563eb; letter-spacing: 0.05em;">DAY 2 · 动车赴海</div>
-      <div style="font-weight: 700; font-size: 0.95rem; margin: 0.2rem 0;">济南 ➔ 青岛</div>
-      <div style="font-size: 0.82rem; opacity: 0.8; line-height: 1.4;">晨汤 · 站内提车 · 海景房看海原浆</div>
-    </div>
-
-    <div style="border-left: 3px solid #0284c7; padding-left: 0.8rem;">
-      <div style="font-size: 0.75rem; font-weight: 800; color: #0284c7; letter-spacing: 0.05em;">DAY 3 · 海钓高光</div>
-      <div style="font-weight: 700; font-size: 0.95rem; margin: 0.2rem 0;">沙子口出海</div>
-      <div style="font-size: 0.82rem; opacity: 0.8; line-height: 1.4;">包船海钓 · 现烹黑头鱼 · 3h大午睡</div>
-    </div>
-
-    <div style="border-left: 3px solid #d97706; padding-left: 0.8rem;">
-      <div style="font-size: 0.75rem; font-weight: 800; color: #d97706; letter-spacing: 0.05em;">DAY 4 · 赶海菜市</div>
-      <div style="font-weight: 700; font-size: 0.95rem; margin: 0.2rem 0;">浅赶海+吃海鲜</div>
-      <div style="font-size: 0.82rem; opacity: 0.8; line-height: 1.4;">会场赶海 · 团岛挑活鲜 · 啤酒屋现蒸</div>
-    </div>
-
-    <div style="border-left: 3px solid #9333ea; padding-left: 0.8rem;">
-      <div style="font-size: 0.75rem; font-weight: 800; color: #9333ea; letter-spacing: 0.05em;">DAY 5 · 满载而归</div>
-      <div style="font-weight: 700; font-size: 0.95rem; margin: 0.2rem 0;">青岛 ➔ 北京</div>
-      <div style="font-size: 0.82rem; opacity: 0.8; line-height: 1.4;">活鲜加冰封箱 · 站前还车 · 抵京蒸蟹</div>
-    </div>
-
-  </div>
-</div>
+<div style="background: var(--color-card); border: 1px solid var(--color-border); border-radius: 14px; padding: 1.2rem 1.5rem; margin: 1.2rem 0; box-shadow: 0 4px 15px rgba(0,0,0,0.03);"><div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 1rem;"><div style="border-left: 3px solid #0d9488; padding-left: 0.8rem;"><div style="font-size: 0.72rem; font-weight: 800; color: #0d9488; letter-spacing: 0.05em;">DAY 1 · 泉城温养</div><div style="font-weight: 700; font-size: 0.92rem; margin: 0.2rem 0;">北京 ➔ 济南</div><div style="font-size: 0.8rem; opacity: 0.75; line-height: 1.4;">把子肉 · 曲水亭泉水茶 · 商河私汤</div></div><div style="border-left: 3px solid #2563eb; padding-left: 0.8rem;"><div style="font-size: 0.72rem; font-weight: 800; color: #2563eb; letter-spacing: 0.05em;">DAY 2 · 动车赴海</div><div style="font-weight: 700; font-size: 0.92rem; margin: 0.2rem 0;">济南 ➔ 青岛</div><div style="font-size: 0.8rem; opacity: 0.75; line-height: 1.4;">晨汤 · 站内提车 · 海景房看海原浆</div></div><div style="border-left: 3px solid #0284c7; padding-left: 0.8rem;"><div style="font-size: 0.72rem; font-weight: 800; color: #0284c7; letter-spacing: 0.05em;">DAY 3 · 海钓高光</div><div style="font-weight: 700; font-size: 0.92rem; margin: 0.2rem 0;">沙子口出海</div><div style="font-size: 0.8rem; opacity: 0.75; line-height: 1.4;">包船海钓 · 现烹黑头鱼 · 3h大午睡</div></div><div style="border-left: 3px solid #d97706; padding-left: 0.8rem;"><div style="font-size: 0.72rem; font-weight: 800; color: #d97706; letter-spacing: 0.05em;">DAY 4 · 赶海菜市</div><div style="font-weight: 700; font-size: 0.92rem; margin: 0.2rem 0;">浅赶海+吃海鲜</div><div style="font-size: 0.8rem; opacity: 0.75; line-height: 1.4;">会场赶海 · 团岛挑活鲜 · 啤酒屋现蒸</div></div><div style="border-left: 3px solid #9333ea; padding-left: 0.8rem;"><div style="font-size: 0.72rem; font-weight: 800; color: #9333ea; letter-spacing: 0.05em;">DAY 5 · 满载而归</div><div style="font-weight: 700; font-size: 0.92rem; margin: 0.2rem 0;">青岛 ➔ 北京</div><div style="font-size: 0.8rem; opacity: 0.75; line-height: 1.4;">活鲜加冰封箱 · 站前还车 · 抵京蒸蟹</div></div></div></div>
 
 ---
 
