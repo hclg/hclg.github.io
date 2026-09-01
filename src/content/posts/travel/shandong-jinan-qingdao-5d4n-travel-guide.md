@@ -124,12 +124,30 @@ description: 拒绝特种兵！北京出发，先济南见友喝泉水茶、泡�
 * **16:00 - 17:30**：打车前往**商河温泉度假区**（车程约 1 小时）。
 * **晚上**：入住私汤房，在院子里放满温热温泉水，泡着私汤喝冷饮，彻底卸下疲惫。
 
+<div style="margin: 1rem 0 1.5rem 0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 14px rgba(0,0,0,0.08); border: 1px solid rgba(16, 185, 129, 0.2);">
+  <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1000&auto=format&fit=crop&q=80" alt="私汤温泉度假" style="width: 100%; height: 260px; object-fit: cover; display: block;" />
+  <div style="background: rgba(16, 185, 129, 0.06); padding: 0.6rem 1rem; font-size: 0.85rem; color: #059669; display: flex; justify-content: space-between; align-items: center;">
+    <span>♨️ <b>商河地热私汤小院</b> · 避世温养</span>
+    <span style="opacity: 0.8;">恒温 50℃+ 天然偏硅酸地热矿泉</span>
+  </div>
+</div>
+
+
 ### Day 2：济南 ➔ 青岛【晨汤放空 ➔ 高铁奔海 ➔ 阳台看海发呆】
 * **09:30 - 11:00**：睡到自然醒，吃完早餐在庭院再泡个晨汤，11:30 退房打车去高铁站。
 * **12:30 - 14:30**：高铁直达青岛，车上听歌睡午觉。
 * **14:30 - 15:30**：青岛高铁站停车场**直接提车**，自驾 25 分钟直达崂山区海景酒店入住。
 * **15:30 - 17:30**：**酒店彻底躺平**，在海景阳台吹风看海、刷手机午休。
 * **18:00 - 20:00**：晚餐推荐**双合园（崂山店）**或**开海·虾水饺**（必点手作鲅鱼水饺、辣炒蛤蜊、原浆扎啤），餐后沙滩漫步散步。
+
+<div style="margin: 1rem 0 1.5rem 0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 14px rgba(0,0,0,0.08); border: 1px solid rgba(14, 165, 233, 0.2);">
+  <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1000&auto=format&fit=crop&q=80" alt="石老人海景与沙滩" style="width: 100%; height: 260px; object-fit: cover; display: block;" />
+  <div style="background: rgba(14, 165, 233, 0.06); padding: 0.6rem 1rem; font-size: 0.85rem; color: #0284c7; display: flex; justify-content: space-between; align-items: center;">
+    <span>🌊 <b>青岛石老人海湾</b> · 阳台看海发呆</span>
+    <span style="opacity: 0.8;">下楼即沙滩 · 避开老城拥堵与停车难</span>
+  </div>
+</div>
+
 
 ### Day 3：青岛【轻松出海海钓 🎣 ➔ 现烹极鲜午餐 ➔ 下午回房补觉】
 * **10:00**：自然醒出门，自驾 15 分钟到**崂山沙子口码头**（或港东渔码头）。
@@ -138,10 +156,28 @@ description: 拒绝特种兵！北京出发，先济南见友喝泉水茶、泡�
 * **14:30 - 17:30**：**开车直接回酒店睡大觉**！没有任何赶场负担。
 * **晚上**：睡醒去吃青岛特色电烤肉（**王姐烧烤 / 鑫源电烤肉**），配塑料袋装一厂鲜原浆扎啤。
 
+<div style="margin: 1rem 0 1.5rem 0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 14px rgba(0,0,0,0.08); border: 1px solid rgba(59, 130, 246, 0.2);">
+  <img src="https://images.unsplash.com/photo-1544551763-77ef2d0cfc6c?w=1000&auto=format&fit=crop&q=80" alt="沙子口出海海钓" style="width: 100%; height: 260px; object-fit: cover; display: block;" />
+  <div style="background: rgba(59, 130, 246, 0.06); padding: 0.6rem 1rem; font-size: 0.85rem; color: #2563eb; display: flex; justify-content: space-between; align-items: center;">
+    <span>🎣 <b>崂山沙子口码头</b> · 乘船出海海钓</span>
+    <span style="opacity: 0.8;">秋季黑头鱼/黄鱼开口黄金期 · 现钓现烹</span>
+  </div>
+</div>
+
+
 ### Day 4：青岛【看潮浅赶海 🌊 ➔ 菜市场挑活鲜 ➔ 啤酒屋大快朵颐】
 * **上午**：自然醒，在海边找家咖啡馆吃早午餐看海。
 * **13:30 - 15:30**：自驾前往**崂山会场海滩**（大片泥沙滩涂），换水鞋踩泥沙挖文蛤、翻礁石抓野生小螃蟹，体验 1.5 小时渔民乐趣即撤。
 * **16:30 - 18:30**：开车去**团岛农贸市场**，亲自挑满黄的秋季大梭子蟹、活皮皮虾、生蚝与海胆；拎到对面的**老青岛市井啤酒屋**现蒸现炒，打 2 升冰镇原浆纯生痛快畅饮！
+
+<div style="margin: 1rem 0 1.5rem 0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 14px rgba(0,0,0,0.08); border: 1px solid rgba(245, 158, 11, 0.2);">
+  <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1000&auto=format&fit=crop&q=80" alt="青岛生猛海鲜大餐" style="width: 100%; height: 260px; object-fit: cover; display: block;" />
+  <div style="background: rgba(245, 158, 11, 0.06); padding: 0.6rem 1rem; font-size: 0.85rem; color: #d97706; display: flex; justify-content: space-between; align-items: center;">
+    <span>🦀 <b>团岛海鲜市场 & 啤酒屋加工</b> · 生猛活鲜大快朵颐</span>
+    <span style="opacity: 0.8;">秋季满黄梭子蟹 · 鲜打一厂原浆扎啤</span>
+  </div>
+</div>
+
 
 ### Day 5：青岛 ➔ 北京【海鲜封箱打包 ➔ 站前还车 ➔ 满载而归】
 * **10:30**：自然醒退房。
