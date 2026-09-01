@@ -145,6 +145,26 @@ const homePath = getRelativeLocaleUrl(locale, "");
           </a>
 
           <a
+            href={getRelativeLocaleUrl(locale, "tags/travel")}
+            class="group flex items-center justify-between p-3 rounded-xl border border-emerald-500/30 bg-gradient-to-r from-emerald-500/10 via-teal-500/5 to-transparent hover:border-emerald-400 hover:bg-emerald-500/20 transition-all duration-200 shadow-xs"
+          >
+            <div class="flex items-center gap-3">
+              <span class="text-lg">🌊</span>
+              <div>
+                <div class="text-sm font-bold text-emerald-400 group-hover:translate-x-0.5 transition-transform">
+                  山海行旅
+                </div>
+                <div class="text-[11px] text-muted-foreground mt-0.5">
+                  自驾路书与度假攻略
+                </div>
+              </div>
+            </div>
+            <span class="text-[10px] font-bold text-emerald-300 bg-emerald-500/20 px-2 py-0.5 rounded-full border border-emerald-400/30">
+              专栏
+            </span>
+          </a>
+
+          <a
             href={getRelativeLocaleUrl(locale, "posts")}
             class="group flex items-center justify-between p-3 rounded-xl border border-border bg-muted/20 hover:bg-muted/50 hover:border-accent/40 transition-all duration-200"
           >
